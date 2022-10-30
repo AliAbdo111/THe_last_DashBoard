@@ -9,27 +9,25 @@ function TAbleSanai3y() {
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setData(response.data.Data);
-      console.log("aaaaa")
+      console.log("aaaaa");
     });
   }, []);
- 
+
   // function Detaiels(id) {
   //   const jobs = data.filter((item) => item._id === id);
   //   setData([...jobs])
   // }
   function deleteRow(id) {
     console.log(id);
-    
-    axios.delete(`http://localhost:7000/sanai3y/delete/${id}`)
-    .then(res => {
-     let  jobs= data.filter((item) => item._id !== id);
-      console.log(jobs)
-      console.log(res.data)
-      console.log(jobs)
+
+    axios.delete(`http://localhost:7000/sanai3y/delete/${id}`).then((res) => {
+      let jobs = data.filter((item) => item._id !== id);
+      console.log(jobs);
+      console.log(res.data);
+      console.log(jobs);
       // console.log(data)
       setData([...data]);
-      })
-      
+    });
   }
   // console.log(data);
 
@@ -52,7 +50,7 @@ function TAbleSanai3y() {
             <td>Adress</td>
             <td>Status</td>
             <td>skills</td>
-            {/* <td>Discration</td> */}
+            <td>Discration</td>
             <td>Delet</td>
           </tr>
         </thead>
@@ -66,22 +64,23 @@ function TAbleSanai3y() {
                 <td>{item.address}</td>
                 <td>{item.status}</td>
                 <td>{item.skills[0]}</td>
-                {/* <td>{item.description}</td> */}
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteRow(item._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+     <td>
                 <button
-                  className="btn btn-danger"
-                  onClick={() => deleteRow(item._id)}
-                >
-                  Delete
-                </button>
-                <button
-                  // onClick={() => Detaiels(item._id)}
-
-                  className="app_di_img"
+                className="app_di_img"
                   data-bs-toggle="modal"
                   data-bs-target={`#Taha${item._id}`}
                 >
                   Detatiels
                 </button>
+                </td>
                 <div
                   className="modal modal-xl fade"
                   id={`Taha${item._id}`}

@@ -15,19 +15,10 @@ function Dashboard() {
    
      <div className="appMain">
         <div className="appMAinNext">
-          
-          
-      
         <Sidbar />
-        {/* <Card /> */}
-
-        <Routes>
-    <Route path="/Sanai3y" element={ < TAbleSanai3y  /> }/>
-    <Route path="/Client" element={<TAbleClient />} />
-    <Route path="/Job" element={<TableJob/>} />
-    </Routes>
-          {/* <Card />
-          <Notifection /> */}
+        <Card />
+   
+   
       </div>
       </div>
     

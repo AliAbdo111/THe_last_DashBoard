@@ -22,6 +22,9 @@
 .resentOrder,
 .recentcustoumer
 {
+    
+    width: 100%;
+    margin: 15px;
     position: relative;
     display: grid;
     padding: 20px;
