@@ -10,7 +10,7 @@
     /* position: fixed; */
     /* width: 370px; */
     height: 100%;
-    background-color: var(--yellow);
+    background-color: #031737;
     transition: 0.5s;
     overflow: hidden;
 }
@@ -34,6 +34,7 @@
 }
 .navbar ul li:hover{
     background-color: aliceblue;
+    width: 100%;
 }
 .profile img {
     margin: 15px auto;
@@ -84,7 +85,7 @@
     display: block;
     width: 100%;
     display: flex;
-    color:var(--black);
+    color:aliceblue;
     text-decoration:none;
 }
 .navbar ul li:hover a{
