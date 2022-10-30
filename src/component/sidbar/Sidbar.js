@@ -1,7 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import "./Sidbar.css";
 
 function Sidbar() {
+ 
+  function LogIn() {
+   
+    localStorage.removeItem("token")
+    
+  }
   return (
     <div className="navbar ">
       <ul>
@@ -15,10 +21,9 @@ function Sidbar() {
         </li>
 
         <li>
-          <NavLink active>
+          <NavLink >
             <span className="icon">
               <ion-icon name="home-outline" />
-              {/* <FontAwesomeIcon icon="fa-solid fa-house" /> */}
             </span>
             <span className="titel ">Home</span>
           </NavLink>
@@ -69,6 +74,20 @@ function Sidbar() {
               <ion-icon name="settings-outline" />
             </span>
             <span className="titel">Setting</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/'
+           onClick={() => {
+            LogIn()
+          }}
+          >
+            <span className="icon"
+           
+            >
+              <ion-icon name="outline" />
+            </span>
+            <span className="titel">Log out</span>
           </NavLink>
         </li>
       </ul>

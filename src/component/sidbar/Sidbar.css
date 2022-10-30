@@ -89,7 +89,8 @@
     text-decoration:none;
 }
 .navbar ul li:hover a{
-    color:var(--gray);
+    color:#031737;
+    font-weight: 600;
 }
 .navbar ul li a .icon{
     position: relative;

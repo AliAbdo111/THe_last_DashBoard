@@ -50,49 +50,50 @@
     border-radius: 6px;
 }
 table{
-    background: linear-gradient(
-        106.37deg,
-        #ffe1bc 29.63%,
-        #ffcfd1 51.55%,
-        #f3c6f1 90.85%
-      );
+background-color: #fff;
 }
  table thead td{
  background-color:var(--glass);
 font-weight: 600;
 font-size: larger;
+padding: 15px;
 }
  table tbody tr {
- font-size: large;
+
+
+ font-weight: bold;
 color: var(--yellow)  ;
 border-bottom: 1px solid rgba(0,0,0,0.1); 
  }
   table tbody tr:hover {
-    background: var(--yellow);
-    color: white;
+    background: gainsboro;
+    /* color: white; */
  }
- .status.delivered{
+ table tbody tr td {
+    padding:0 15px ;
+ }
+ .status .delivered{
   padding: 2px 4px;
   background: var(--green);
   color:white ;
   font-size: 14px;
   font-weight: 500; 
  }
- .status.pending{
+ .status .pending{
     padding: 2px 4px;
     background:yellow;
     color:white ;
     font-size: 14px;
     font-weight: 500; 
    }
-   .status.return{
+   .status .return{
     padding: 2px 4px;
     background:red;
     color:aliceblue ;
     font-size: 14px;
     font-weight: 500; 
    }
-   .status.inprogress{
+   .status .inprogress{
     padding: 2px 4px;
     background:blue;
     color:white ;

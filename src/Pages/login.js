@@ -18,7 +18,7 @@ function LoginPAge()
                 password: ''
             },
             onSubmit: (values) => {
-                // console.log(values)
+                
                 axios.post("http://localhost:7000/client/signin", values).then((res) => {
                     console.log(res)
                     if (res.status == 200) {
@@ -42,6 +42,7 @@ function LoginPAge()
             validationSchema: loginSchema
 
         })
+        console.log(loginFormik.errors)
     return(
         <Fragment>
         <div className='container parint_login '>
