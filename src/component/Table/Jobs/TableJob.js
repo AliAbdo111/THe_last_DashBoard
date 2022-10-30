@@ -1,6 +1,8 @@
 import "../Table.css";
 import axios from "axios";
+import _ from  'lodash'
 import React, { useEffect, useState } from "react";
+const pageSize=10;
 const baseURL = "http://localhost:7000/Jobs/all";
 function TableJob() {
   const [data, setData] = useState([]);
@@ -12,7 +14,9 @@ function TableJob() {
    console.log(data)
     }, []);
   });
-  
+  const pageCount=data? Math.ceil(data.length/pageSize):0;
+     if(pageCount===1)return null
+     const pages=_.range(1, pageCount+1)
   function deleteRow( id)
   {  console.log(id)
 
@@ -54,7 +58,11 @@ function TableJob() {
               <td>{item.title}</td>
               <td>{item.city}</td>
               <td>{item.address}</td>             
-              <td>{item.status}</td>           
+              <td><p className={
+                item.status?'btn btn-success':'btn btn-danger'
+              } ></p>
+              {item.status?'compelete':'pending'}
+               </td>            
               <td>
                 <button
                   className="btn btn-danger"
@@ -69,6 +77,16 @@ function TableJob() {
           ))}
         </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {
+      pages.map((page)=>(
+      <li class="page-item"><a class="page-link" >{page}</a></li>))
+    }
+ 
+    
+  </ul>
+</nav>
     </div>
   );
 }  

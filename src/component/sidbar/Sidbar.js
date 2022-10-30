@@ -18,6 +18,7 @@ function Sidbar() {
           <NavLink active>
             <span className="icon">
               <ion-icon name="home-outline" />
+              {/* <FontAwesomeIcon icon="fa-solid fa-house" /> */}
             </span>
             <span className="titel ">Home</span>
           </NavLink>
