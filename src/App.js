@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Route, Routes, useLocation } from "react-router-dom";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Dashboard from "./Pages/Dashboard";
+import LoginPAge from "./Pages/login";
+import Sidbar from "./component/sidbar/Sidbar";
 function App() {
+  let token = localStorage.getItem("token");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Sidbar/>
+    <Routes>
+    <Route path="/" element={<LoginPAge />} />
+    <Route path="/Dashboard" element={<Dashboard />}></Route>
+    <Route path="*" element={< Dashboard/>} /> 
+  </Routes>
+  </>
   );
 }
 

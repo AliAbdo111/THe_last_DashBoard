@@ -1,0 +1,49 @@
+.card{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--yellow);
+    justify-content: space-around;
+    height: 250px; 
+    border: none;
+
+}
+.card .card1{
+    position: relative;
+    background-color: var(--yellow);
+    padding: 60px;
+    border-radius: 20px;
+    display:flex;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0 5px 25px rgba(0, 0, 0,0.08);
+}
+.card .card1 .unmber{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color:var(--black)  ;
+
+}
+.card .card1 .namecard
+ {
+color:  var(--black);
+font-size:1.5em ;
+margin-top:5px ;
+}
+.card .card1 .iconBox
+ {
+ color:  var(--black);
+font-size:3.5em ;
+}
+.card .card1:hover{
+    background-color:  var(--gray)
+}
+.card .card1:hover .namecard,
+.card .card1:hover .unmber,
+.card .card1:hover .iconBox{
+    color: white;
+}

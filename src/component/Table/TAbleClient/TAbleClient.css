@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+*{
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+:root{
+   
+    --yellow: linear-gradient(180deg, #F8D49A -146.42%, #FAD79D -46.42%);
+    --orange: #fca61f;
+    --black: #242d49;
+    --gray: #788097;
+    --purple: linear-gradient(180deg, #BB67FF 0%, #C484F3 100%);
+    --pink: #FF919D;
+    --glass: rgba(255, 255, 255, 0.54);
+    --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
+    --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+    --activeItem: #f799a354;
+}
+.resentOrder,
+.recentcustoumer
+{
+    position: relative;
+    display: grid;
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0,0.08);
+    border-radius: 20px;
+}
+.cardHeadr{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+.cardHeadr h2{
+    font-weight:600;
+    color: var(--black);
+}
+.search{
+
+    border-radius: 100;
+    
+}
+.btn{
+    position: relative;
+    padding:5px 10px ;
+    background:red;
+    text-decoration: none;
+    border-radius: 6px;
+}
+table{
+    background: linear-gradient(
+        106.37deg,
+        #ffe1bc 29.63%,
+        #ffcfd1 51.55%,
+        #f3c6f1 90.85%
+      );
+}
+ table thead td{
+ background-color:var(--glass);
+font-weight: 600;
+font-size: larger;
+}
+ table tbody tr {
+ font-size: large;
+color: var(--yellow)  ;
+border-bottom: 1px solid rgba(0,0,0,0.1); 
+ }
+  table tbody tr:hover {
+    background: var(--yellow);
+    color: white;
+ }
+ .status.delivered{
+  padding: 2px 4px;
+  background: var(--green);
+  color:white ;
+  font-size: 14px;
+  font-weight: 500; 
+ }
+ .status.pending{
+    padding: 2px 4px;
+    background:yellow;
+    color:white ;
+    font-size: 14px;
+    font-weight: 500; 
+   }
+   .status.return{
+    padding: 2px 4px;
+    background:red;
+    color:aliceblue ;
+    font-size: 14px;
+    font-weight: 500; 
+   }
+   .status.inprogress{
+    padding: 2px 4px;
+    background:blue;
+    color:white ;
+    font-size: 14px;
+    font-weight: 500; 
+   }
