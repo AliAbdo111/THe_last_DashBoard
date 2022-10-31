@@ -21,20 +21,21 @@
 .navbar ul{
     position: absolute;
     top:0px;
-    left: 0px;
+    left: -35px;
     width: 100%;
 }
 .navbar ul li{
     position: relative;
     width:  100%;
     list-style: none;
-    border-bottom-left-radius: 30px;
-    border-top-left-radius: 30px;
+    padding-left: 10px;
+    /* border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px; */
 
 }
 .navbar ul li:hover{
     background-color: aliceblue;
-    width: 100%;
+    width: 100vw;
 }
 .profile img {
     margin: 15px auto;
@@ -100,8 +101,9 @@
     line-height: 70px;
   text-align: center;
 }
-.navbar ul li a .icon ion-icon{
-    font-size:1.75em;
+.navbar ul li a .icon {
+    font-size:1.3rem;
+    line-height: 62px;
    /* margin-right: 300px; */
 }
 .navbar ul li a .titel
@@ -116,7 +118,7 @@
     text-align:start;
     white-space:nowrap;
 }
-.navbar ul li:hover a::before{
+/* .navbar ul li:hover a::before{
 content: "";
 position: absolute;
 top: -50px;
@@ -139,4 +141,5 @@ pointer-events: none;
     border-radius:50px;
     box-shadow: 35px -35px 0 10px white;
     pointer-events: none;
-    }
+    } */
+  

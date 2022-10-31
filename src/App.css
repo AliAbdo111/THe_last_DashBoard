@@ -84,7 +84,7 @@
   width: 97%;
   background: #EFF1F3;
   border-radius: 2rem;
-  gap: 16px;
+  /* gap: 16px; */
   grid-template-columns: 15rem auto ;
-  overflow: hidden;
+  /* overflow: hidden; */
 }

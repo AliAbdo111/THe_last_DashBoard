@@ -3,6 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Pages/Dashboard";
 import LoginPAge from "./Pages/login";
+// import { IconName } from "react-icons/fa";
 import Sidbar from "./component/sidbar/Sidbar";
 function App() {
   let token = localStorage.getItem("token");

@@ -14,15 +14,19 @@ function TAbleClient() {
     });
   }, []);
 
-  function deleteRow(id) {
-    console.log(id);
-    axios.delete(`http://localhost:7000/Client/delete/${id}`).then((res) => {
-      const jobs = data.filter((item) => item._id !== id);
-      console.log(data);
 
-      setData([...data]);
-    });
-  }
+  function deleteRow( id)
+  {  console.log(id)
+
+    const jobs = data.filter(item => item._id !== id);  
+      console.log(jobs)
+      
+      setData([...jobs]); 
+    axios.delete(`http://localhost:7000/Client/delete/${id}`)  
+    .then(res => {  
+      
+      })  
+    }
   return (
     <div className="resentOrder">
       <div className="cardHeadr">

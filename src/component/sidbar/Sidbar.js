@@ -1,6 +1,6 @@
 import { NavLink,useNavigate } from "react-router-dom";
 import "./Sidbar.css";
-
+import { FaHome,FaSignOutAlt,FaChartPie,FaUserAlt,FaCommentAlt } from 'react-icons/fa';
 function Sidbar() {
  
   function LogIn() {
@@ -23,15 +23,16 @@ function Sidbar() {
         <li>
           <NavLink >
             <span className="icon">
-              <ion-icon name="home-outline" />
+              
+            <FaHome/>
             </span>
             <span className="titel ">Home</span>
           </NavLink>
         </li>
         <li>
-          <NavLink>
+          <NavLink to="/Dashboard">
             <span className="icon">
-              <ion-icon name="home-outline" />
+            <FaChartPie/>
             </span>
             <span className="titel ">Dash Board</span>
           </NavLink>
@@ -39,7 +40,7 @@ function Sidbar() {
         <li>
           <NavLink to="/Sanai3y">
             <span className="icon">
-              <ion-icon name="people-outline" />
+            <FaUserAlt/>
             </span>
             <span className="titel ">Sanai3y</span>
           </NavLink>
@@ -47,7 +48,7 @@ function Sidbar() {
         <li>
           <NavLink to="/Client">
             <span className="icon">
-                <ion-icon name="chatbubble-ellipses-outline" />
+            <FaUserAlt/>
               </span>
             <span className="titel">Client</span>
           </NavLink>
@@ -55,7 +56,7 @@ function Sidbar() {
         <li>
           <NavLink to="/Job">
             <span className="icon">
-              <ion-icon name="information-circle-outline" />
+            <FaUserAlt/>
             </span>
             <span className="titel">Jops</span>
           </NavLink>
@@ -63,15 +64,15 @@ function Sidbar() {
         <li>
           <NavLink to="Job">
             <span className="icon">
-              <ion-icon name="information-circle-outline" />
+            <FaCommentAlt/>
             </span>
-            <span className="titel">Massege</span>
+            <span className="titel">Message</span>
           </NavLink>
         </li>
         <li>
           <NavLink>
             <span className="icon">
-              <ion-icon name="settings-outline" />
+            <FaUserAlt/>
             </span>
             <span className="titel">Setting</span>
           </NavLink>
@@ -85,7 +86,7 @@ function Sidbar() {
             <span className="icon"
            
             >
-              <ion-icon name="outline" />
+              <FaSignOutAlt/>
             </span>
             <span className="titel">Log out</span>
           </NavLink>
