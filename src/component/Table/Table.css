@@ -51,7 +51,6 @@
 .btn{
     position: relative;
     padding:5px 10px ;
-    background:red;
     text-decoration: none;
     border-radius: 6px;
 }
@@ -111,6 +110,20 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
     font-size: 14px;
     font-weight: 500; 
    }
+   .modal-dialog{
+    width: 50vw;
+    margin: auto;
+   }
+   .card-body div{
+    display: flex; 
+    justify-content: center;
+   }
+   .card-body div h4{
+    padding-right: 13px;
+    font-size: 20px;
+    color: #000;
+    font-weight: 600;
+   }
 
    /* Responsive */
    @media (max-width:1040px) {
@@ -120,5 +133,17 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
     
   overflow-x: auto;
 }
+    
+   }
+   @media (max-width:600px) {
+    .modal-title{
+        font-size: 20px !important;
+    }
+    .modal-body{
+        padding: 0;
+    }
+    .card-body div{
+      flex-direction: column;
+       }
     
    }

@@ -7,6 +7,7 @@ import TableJob from '../Table/Jobs/TableJob';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import MainScreen from '../../Pages/MainScreen';
+import { FaUserAlt,FaEye } from 'react-icons/fa';
 
 
 function Card() {
@@ -16,38 +17,46 @@ function Card() {
         <div className="card">
           <div className="card1">
             <div>
-              <div className="unmber">1,900</div>
-              <div className="namecard">Jops</div>
               <div className="iconBox">
-                <ion-icon name="eye-outline" />
+                <FaEye/>
               </div>
+            <section>
+                <div className="unmber">1,900</div>
+                <div className="namecard">Jops</div>
+            </section>
             </div>
           </div>
           <div className="card1">
             <div>
-              <div className="unmber">80.00</div>
-              <div className="namecard">Sna3y</div>
               <div className="iconBox">
-                <ion-icon name="cart-outline" />
+              <FaUserAlt/>
               </div>
+            <section >
+                <div className="namecard">Sanai3y</div>
+                <div className="unmber">80.00</div>
+            </section>
             </div>
           </div>
           <div className="card1">
             <div>
-              <div className="unmber">1,900</div>
-              <div className="namecard">Users</div>
               <div className="iconBox">
-                <ion-icon name="chatbubble-ellipses-outline" />
+              <FaUserAlt/>
               </div>
+          <section>
+                <div className="unmber">1,900</div>
+                <div className="namecard">Users</div>
+          </section>
             </div>
           </div>
           <div className="card1">
             <div>
-              <div className="unmber">1,900</div>
-              <div className="namecard">Users</div>
               <div className="iconBox">
-                <ion-icon name="chatbubble-ellipses-outline" />
+              <FaUserAlt/>
               </div>
+           <section>
+               <div className="unmber">1,900</div>
+               <div className="namecard">Users</div>
+           </section>
             </div>
           </div>
           <Routes>

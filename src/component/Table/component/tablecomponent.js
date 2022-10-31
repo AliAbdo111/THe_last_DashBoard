@@ -20,7 +20,7 @@ const [stat,setState]=useState()
 
             <td>gender</td>
             <td>natinal Id</td>
-            <td>Delet</td>
+            <td>Delete</td>
           </tr>
         </thead>
         <tbody>
