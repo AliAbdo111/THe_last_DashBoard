@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const baseURL = "http://localhost:7000/Client/all";
 function TAbleClient() {
   const [data, setData] = useState([]);
-  const [serch, setSearch] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -39,12 +39,8 @@ function TAbleClient() {
           <tr>
             <td>Name</td>
             <td>Email</td>
-            <td>Address</td>
-            {/* <td>Status</td> */}
-            {/* <td>skills</td> */}
-            {/* <td>Discration</td> */}
+            <td>Adress</td>
             <td>Phone</td>
-
             <td>gender</td>
             {/* <td>natinal Id</td> */}
             <td>Delete</td>
@@ -53,16 +49,17 @@ function TAbleClient() {
         </thead>
         <tbody>
           {data
-            .filter((item) => item.firstName.toLowerCase().includes(serch))
+            .filter(
+              (item) =>
+                item.firstName.toLowerCase().includes(search) ||
+                item.address.toLowerCase().includes(search)
+            )
             .map((item) => (
               <tr key={item._id}>
                 <td>{item.firstName}</td>
                 <td>{item.email}</td>
                 <td>{item.address}</td>
-                {/* <td>{item.status}</td> */}
-                {/* <td>{item.skills[0]}</td> */}
-                {/* <td>{item.description}</td> */}
-                {/* <td>{item.phoneNumber}</td> */}
+
                 <td>{item.gender}</td>
                 <td>{item.nationalId}</td>
                 <td>
