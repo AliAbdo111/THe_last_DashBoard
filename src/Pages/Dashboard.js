@@ -16,9 +16,11 @@ function Dashboard() {
      <div className="appMain">
         <div className="appMAinNext">
         <Sidbar />
-        <Card />
-   
-   
+       <div style={{flexDirection:'column',overflow:'auto '}}>
+        <Card />  
+       
+       </div>
+        
       </div>
       </div>
     

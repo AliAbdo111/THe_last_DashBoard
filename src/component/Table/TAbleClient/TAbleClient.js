@@ -26,7 +26,7 @@ function TAbleClient() {
   return (
     <div className="resentOrder">
       <div className="cardHeadr">
-        <h2>Client heloo baby Register</h2>
+        <h2>Client Register</h2>
         <input
           type="text"
           placeholder="Search About client"

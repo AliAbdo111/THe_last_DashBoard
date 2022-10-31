@@ -6,6 +6,7 @@ import TAbleClient  from '../Table/TAbleClient/TAbleClient';
 import TableJob from '../Table/Jobs/TableJob';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
+import MainScreen from '../../Pages/MainScreen';
 
 
 function Card() {
@@ -50,7 +51,7 @@ function Card() {
             </div>
           </div>
           <Routes>
-    {/* <Route path="/Dashboard" element={ < MainScreen /> }/> */}
+    <Route path="/" element={<MainScreen/>}/>
     <Route path="/Sanai3y" element={ < TAbleSanai3y  /> }/>
     <Route path="/Client" element={<TAbleClient />} />
     <Route path="/Job" element={<TableJob/>} />

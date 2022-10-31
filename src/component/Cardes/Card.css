@@ -7,18 +7,20 @@
     flex-wrap: wrap;
     background-color: var(--yellow);
     justify-content: space-around;
-    height: 250px; 
+    /* height: 250px;  */
     border: none;
 
 }
 .card .card1{
     position: relative;
-    background-color: var(--yellow);
-    padding: 60px;
+    background-color: #fff;
+    padding: 45px;
+    margin-bottom: 10px;
     border-radius: 20px;
     display:flex;
     cursor: pointer;
     justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.254);
     box-shadow: 0 5px 25px rgba(0, 0, 0,0.08);
 }
 .card .card1 .unmber{
@@ -46,4 +48,10 @@ font-size:3.5em ;
 .card .card1:hover .unmber,
 .card .card1:hover .iconBox{
     color: white;
+}
+@media (max-width:1040px){
+    .card .card1{
+        padding: 30px;
+        font-size: 16px;
+    }
 }
