@@ -6,7 +6,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     background-color: var(--yellow);
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* height: 250px;  */
     border: none;
 
@@ -14,14 +14,24 @@
 .card .card1{
     position: relative;
     background-color: #fff;
-    padding: 45px;
+    padding: 20px;
     margin-bottom: 10px;
     border-radius: 20px;
     display:flex;
+    flex-wrap: wrap;
     cursor: pointer;
     justify-content: space-between;
     border: 1px solid rgba(0, 0, 0, 0.254);
     box-shadow: 0 5px 25px rgba(0, 0, 0,0.08);
+    width: 40%;
+}
+.card .card1 div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.card .card1 div section{
+    flex-direction: column;
 }
 .card .card1 .unmber{
     position: relative;
@@ -39,7 +49,8 @@ margin-top:5px ;
 .card .card1 .iconBox
  {
  color:  var(--black);
-font-size:3.5em ;
+font-size:2.5em ;
+margin-right: 10px;
 }
 .card .card1:hover{
     background-color:  var(--gray)
@@ -49,9 +60,8 @@ font-size:3.5em ;
 .card .card1:hover .iconBox{
     color: white;
 }
-@media (max-width:1040px){
+@media (max-width:800px){
     .card .card1{
-        padding: 30px;
-        font-size: 16px;
+   width: 100%;
     }
 }

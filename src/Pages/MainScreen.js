@@ -4,7 +4,7 @@ import TAbleClient  from '../component/Table/TAbleClient/TAbleClient';
 import TableJob from '../component/Table/Jobs/TableJob';
 function MainScreen() {
   return (
-    <div>
+    <div style={{"overflow-x": 'auto'}}>
           <TAbleClient/>
          <TAbleSanai3y/>
          <TableJob/>
