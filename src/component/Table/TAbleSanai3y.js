@@ -9,32 +9,22 @@ function TAbleSanai3y() {
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setData(response.data.Data);
-      console.log("aaaaa");
+      // console.log("aaaaa");
     });
   }, []);
-
-  // function Detaiels(id) {
-  //   const jobs = data.filter((item) => item._id === id);
-  //   setData([...jobs])
-  // }
   function deleteRow(id) {
-    console.log(id);
-
-    axios.delete(`http://localhost:7000/sanai3y/delete/${id}`).then((res) => {
-      let jobs = data.filter((item) => item._id !== id);
-      console.log(jobs);
-      console.log(res.data);
-      console.log(jobs);
-      // console.log(data)
-      setData([...data]);
-    });
+      // console.log(id);
+      let sanai3y = data.filter((item) => item._id !== id);
+      setData([...sanai3y]);
+      axios
+      .delete(`http://localhost:7000/sanai3y/delete/${id}`)
+      .then((res) => {});
   }
-  // console.log(data);
 
   return (
     <div className="resentOrder">
       <div className="cardHeadr">
-        <h2>Client heloo baby Register</h2>
+        <h2> Sanai3y Register</h2>
         <input
           type="text"
           placeholder="Search About client"
@@ -72,14 +62,14 @@ function TAbleSanai3y() {
                     Delete
                   </button>
                 </td>
-     <td>
-                <button
-                className="app_di_img"
-                  data-bs-toggle="modal"
-                  data-bs-target={`#Taha${item._id}`}
-                >
-                  Detatiels
-                </button>
+                <td>
+                  <button
+                    className="app_di_img"
+                    data-bs-toggle="modal"
+                    data-bs-target={`#Taha${item._id}`}
+                  >
+                    Detatiels
+                  </button>
                 </td>
                 <div
                   className="modal modal-xl fade"
