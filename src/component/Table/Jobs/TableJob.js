@@ -2,31 +2,52 @@ import "../Table.css";
 import axios from "axios";
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
+//////////////////constant//////////////////
 const pageSize = 5;
 const baseURL = "http://localhost:7000/Jobs/all";
+
+/////////////////commponent///////////////////
+
 function TableJob() {
   const [data, setData] = useState([]);
   const [serch, setSearch] = useState("");
   const [pagenetdPost, setPage] = useState([]);
-  const [currentPge, setCurrentPge] = useState();
-
-  // const []
-
+  const [currentPge, setCurrentPge] = useState('');
+  const [order, setOrder] = useState("ASC");
   useEffect(() => {
-    // invalid url will trigger an 404 error
     axios.get(baseURL).then((response) => {
-      setData (response.data.data);
-      //  console.log(response.data.data)
+      setData(response.data.data);
+      console.log("efect");
       setPage(_(response.data.data).slice(0).take(pageSize).value());
     });
   }, []);
+
+
+  ////////////////////Sorting////////////////////
+  const sorting = (col) => {
+    if (order === "ASC") {
+      const sorted = [...data].sort((a, b) =>
+        a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+      );
+      setPage(sorted);
+      setOrder("DSC");
+    }
+    if (order === "DSC") {
+      const sorted = [...data].sort((a, b) =>
+        a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+      );
+      setPage(sorted);
+      setOrder("ASC");
+    }
+  };
+  ///////////////////////pagination////////////////
   console.log(pagenetdPost);
 
-  const pageCount = data ? Math.ceil(data.length/pageSize) : 0;
+  const pageCount = pagenetdPost ? Math.ceil(data.length / pageSize) : 0;
   if (pageCount === 1) return null;
   const pages = _.range(1, pageCount + 1);
   const pagination = (pagnum) => {
-    console.log(pagnum)
+    console.log(pagnum);
     setCurrentPge(pagnum);
     // setData(pagnum)
     const startIndex = (pagnum - 1) * pageSize;
@@ -38,8 +59,7 @@ function TableJob() {
     console.log(id);
     const jobs = data.filter((item) => item._id !== id);
     console.log(jobs);
-  
-    setData([...jobs]);
+    setPage(jobs);
     // setData([...jobs]);
     axios.delete(`http://localhost:7000/Jobs/delete/${id}`).then((res) => {});
   }
@@ -60,23 +80,28 @@ function TableJob() {
           <thead>
             <tr>
               <td> Client Name </td>
-              <td> title</td>
-              <td>city</td>
-              <td>address</td>
-              <td>status</td>
+              <td onClick={() => sorting("title")}> title</td>
+              <td onClick={() => sorting("city")}>city</td>
+              <td onClick={() => sorting("address")}>address</td>
+              <td onClick={() => sorting("status")}>status</td>
               <td>Delet</td>
             </tr>
           </thead>
           <tbody>
-            {
-             pagenetdPost.filter((item) => item.title.toLowerCase().includes(serch))
+            {pagenetdPost
+              .filter((item) => 
+              item.title.toLowerCase().includes(serch)||
+              item.address.toLowerCase().includes(serch)||
+              item.city.toLowerCase().includes(serch)||
+              item.status.toLowerCase().includes(serch)
+              )
               .map((item) => (
                 <tr key={item._id}>
                   <td>{item.clientId}</td>
                   <td>{item.title}</td>
                   <td>{item.city}</td>
                   <td>{item.address}</td>
-                  <td>{item.status}</td> 
+                  <td>{item.status}</td>
                   <td>
                     <button
                       className="btn btn-danger"
@@ -96,8 +121,10 @@ function TableJob() {
         <ul class="pagination">
           {pages.map((page) => (
             <li>
-              <p class="page-link" 
-              onClick={() => pagination(page)}>
+              <p
+                class="page-link btn btn-succes"
+                onClick={() => pagination(page)}
+              >
                 {page}
               </p>
             </li>
