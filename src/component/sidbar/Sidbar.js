@@ -1,30 +1,32 @@
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Sidbar.css";
-import { FaHome,FaSignOutAlt,FaChartPie,FaUserAlt,FaCommentAlt } from 'react-icons/fa';
+
+import {
+  FaHome,
+  FaSignOutAlt,
+  FaChartPie,
+  FaUserAlt,
+  FaCommentAlt,
+} from "react-icons/fa";
 function Sidbar() {
- 
   function LogIn() {
-   
-    localStorage.removeItem("token")
-    
+    localStorage.removeItem("token");
   }
   return (
     <div className="navbar ">
       <ul>
         <li>
-          <NavLink >
-            <span className="icon" toggle="test">
-              <ion-icon name="logo-apple"></ion-icon>
+          <NavLink>
+            <span className="titel px-5 ">
+              <img height={90} src={require("../../image/logo.png")} />
             </span>
-            <span className="titel">brand Name</span>
           </NavLink>
         </li>
 
         <li>
-          <NavLink >
+          <NavLink>
             <span className="icon">
-              
-            <FaHome/>
+              <FaHome />
             </span>
             <span className="titel ">Home</span>
           </NavLink>
@@ -32,7 +34,7 @@ function Sidbar() {
         <li>
           <NavLink to="/Dashboard">
             <span className="icon">
-            <FaChartPie/>
+              <FaChartPie />
             </span>
             <span className="titel ">Dash Board</span>
           </NavLink>
@@ -40,7 +42,7 @@ function Sidbar() {
         <li>
           <NavLink to="/Sanai3y">
             <span className="icon">
-            <FaUserAlt/>
+              <FaUserAlt />
             </span>
             <span className="titel ">Sanai3y</span>
           </NavLink>
@@ -48,15 +50,15 @@ function Sidbar() {
         <li>
           <NavLink to="/Client">
             <span className="icon">
-            <FaUserAlt/>
-              </span>
+              <FaUserAlt />
+            </span>
             <span className="titel">Client</span>
           </NavLink>
         </li>
         <li>
           <NavLink to="/Job">
             <span className="icon">
-            <FaUserAlt/>
+              <FaUserAlt />
             </span>
             <span className="titel">Jops</span>
           </NavLink>
@@ -64,7 +66,7 @@ function Sidbar() {
         <li>
           <NavLink to="Job">
             <span className="icon">
-            <FaCommentAlt/>
+              <FaCommentAlt />
             </span>
             <span className="titel">Message</span>
           </NavLink>
@@ -72,21 +74,20 @@ function Sidbar() {
         <li>
           <NavLink>
             <span className="icon">
-            <FaUserAlt/>
+              <FaUserAlt />
             </span>
             <span className="titel">Setting</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to='/'
-           onClick={() => {
-            LogIn()
-          }}
+          <NavLink
+            to="/"
+            onClick={() => {
+              LogIn();
+            }}
           >
-            <span className="icon"
-           
-            >
-              <FaSignOutAlt/>
+            <span className="icon">
+              <FaSignOutAlt />
             </span>
             <span className="titel">Log out</span>
           </NavLink>

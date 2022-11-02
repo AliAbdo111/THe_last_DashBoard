@@ -12,7 +12,7 @@ import {
 
 /////constanet/////
 const pageSize = 5;
-const baseURL = "http://localhost:7000/Client/all";
+const baseURL = "http://localhost:7000/client/all";
 ////commponent//////
 
 function TAbleClient() {
@@ -26,7 +26,7 @@ function TAbleClient() {
     axios.get(baseURL).then((response) => {
       setData(response.data.Data);
       setPage(_(response.data.Data).slice(0).take(pageSize).value());
-    });
+    });   
   }, []);
   const sorting = (col) => {
     if (order === "ASC") {
@@ -47,7 +47,7 @@ function TAbleClient() {
 
   /////////////////////pagination/////////////////
   const pageCount = pagenetdPost ? Math.ceil(data.length / pageSize) : 0;
-  if (pageCount === 1) return null;
+  if (pageCount === 0) return null;
   const pages = _.range(1, pageCount + 1);
   const pagination = (pagnum) => {
     console.log(pagnum);
@@ -60,7 +60,7 @@ function TAbleClient() {
   /////////////////////////////delet function///////////////////////////////////
   function deleteRow(id) {
     // console.log(id);
-    const Client = data.filter((item) => item._id !== id);
+    let Client = data.filter((item) => item._id !== id);
     setData([...Client]);
     axios.delete(`http://localhost:7000/Client/delete/${id}`).then((res) => {});
   }
@@ -83,9 +83,7 @@ function TAbleClient() {
             <td onClick={() => sorting("email")}>Email</td>
             <td onClick={() => sorting("address")}>Adress</td>
             <td onClick={() => sorting("gender")}>gender</td>
-            <td>Phone</td>
-            <td>gender</td>
-            {/* <td>natinal Id</td> */}
+            <td>National ID</td>
             <td>Delete</td>
             <td>Details</td>
           </tr>
@@ -99,8 +97,8 @@ function TAbleClient() {
                 item.email.toLowerCase().includes(search) ||
                 item.gender.toLowerCase().includes(search)
             )
-            .map((item) => (
-              <tr key={item._id}>
+            .map((item,index) => (
+              <tr key={index}>
                 <td>{item.firstName}</td>
                 <td>{item.email}</td>
                 <td>{item.address}</td>
@@ -152,59 +150,10 @@ function TAbleClient() {
 
                       <div className="modal-body">
                         {/* data Snai3y In Details */}
-                        <div className="some_edit_about_snai3y d-flex">
-                          <div className="card-body">
-                            <div>
-                              <h4>First Name :</h4>
-                              <h5>{item.firstName}</h5>
-                            </div>
-                            <div>
-                              <h4>Last Name :</h4>
-                              <h5>{item.lastName}</h5>
-                            </div>
-                           
-                            <div>
-                              <h4>Phone Number :</h4>
-                              <h5>{item.phoneNumber}</h5>
-                            </div>
-                            <div>
-                              <h4>Email :</h4>
-                              <h5>{item.email}</h5>
-                            </div>
-                            <div>
-                              <h4>City :</h4>
-                              <h5>اسوان</h5>
-                            </div>
-                            <div>
-                              <h4>National Id :</h4>
-                              <h5 className="card-text">{item.nationalId}</h5>
-                            </div>
-                            <div>
-                              <h4>title :</h4>
-                              <h5 className="card-title">{item.title}</h5>
-                            </div>
-                            <div>
-                              <h4>Age :</h4>
-                              <h5>{item.age}</h5>
-                            </div>
-                            <div>
-                              <h4>Joined Date :</h4>
-                              <h5>{item.joinedDate}</h5>
-                            </div>
-                            <div>
-                              <h4>Gender :</h4>
-                              <h5>{item.gender}</h5>
-                            </div>
-                            <div>
-                              <h4>Rule :</h4>
-                              <h5>{item.rule}</h5>
-                            </div>
-                            <div>
-                              <h4> Address :</h4>
-                              <h5>{item.address}</h5>
-                            </div>
-                            <div>
-                              <h4>Image :</h4>
+                        <div className="some_edit_about_snai3y">
+                          <div className="cards-body">
+                          <div>
+                              <h4 className="fw-bolder">Image :</h4>
                               <img
                               width={150} 
                               // height={250}
@@ -213,6 +162,56 @@ function TAbleClient() {
                                 alt=""
                               />
                             </div>
+                            <div>
+                              <h4 className="fw-bolder">First Name :</h4>
+                              <h5>{item.firstName}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">Last Name :</h4>
+                              <h5>{item.lastName}</h5>
+                            </div>
+                           
+                            <div>
+                              <h4 className="fw-bolder">Phone Number :</h4>
+                              <h5>{item.phoneNumber}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">Email :</h4>
+                              <h5>{item.email}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">City :</h4>
+                              <h5>اسوان</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">National Id :</h4>
+                              <h5 className="card-text">{item.nationalId}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">title :</h4>
+                              <h5 className="card-title">{item.title}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">Age :</h4>
+                              <h5>{item.age}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">Joined Date :</h4>
+                              <h5>{item.joinedDate}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">Gender :</h4>
+                              <h5>{item.gender}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder">Rule :</h4>
+                              <h5>{item.rule}</h5>
+                            </div>
+                            <div>
+                              <h4 className="fw-bolder"> Address :</h4>
+                              <h5>{item.address}</h5>
+                            </div>
+                         
                           
                           </div>
                         </div>
@@ -235,11 +234,11 @@ function TAbleClient() {
         </tbody>
       </table>
       <nav aria-label="Page navigation example">
-        <ul class="pagination">
+        <ul className="pagination">
           {pages.map((page) => (
             <li>
               <p
-                class="page-link btn btn-succes"
+                className="page-link btn btn-succes"
                 onClick={() => pagination(page)}
               >
                 {page}

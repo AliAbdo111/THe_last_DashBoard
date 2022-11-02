@@ -23,7 +23,7 @@
 .recentcustoumer
 {
     
-  /* overflow-x: auto; */
+  overflow-x: auto;
     width: 100%;
     margin: 15px 0;
     position: relative;
@@ -112,13 +112,21 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
    }
    .modal-dialog{
     width: 50vw;
-    margin: auto;
+    margin:0 auto;
    }
-   .card-body div{
+   .cards-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+   }
+   .cards-body div{
     display: flex; 
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
    }
-   .card-body div h4{
+   .cards-body div h4{
     padding-right: 13px;
     font-size: 20px;
     color: #000;
@@ -142,7 +150,7 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
     .modal-body{
         padding: 0;
     }
-    .card-body div{
+    .cards-body div{
       flex-direction: column;
        }
     

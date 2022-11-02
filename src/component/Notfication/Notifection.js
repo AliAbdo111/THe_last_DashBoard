@@ -1,20 +1,27 @@
-import Update  from "../Update/Update"
 
-
-function Notifection()
-{
-    return(
-        <div className="RightSide">
-      <div>
-        <h3>Updates</h3>
-        <Update />
+import { UpdatesData } from "../../Pages/DataNotfication";
+import './Notifection.css'
+function Notifection() {
+  return (
+    <div className="Updates">
+      <div className="border-bottom w-100 px-3 p-2">
+        <h2>Notifications</h2>
       </div>
-      <div>
-        <h3>Client  Review</h3>
-        <Update />
-    
-      </div>
-    </div>
-    )
+    {UpdatesData.map((update,index) => {
+      return (
+        <div className="update " key={index}>
+          <img src={update.img} alt="profile" />
+          <div className="noti">
+            <div  style={{marginBottom: '0.5rem'}}>
+              <span>{update.name}</span>
+              <span> {update.noti}</span>
+            </div>
+              <span>{update.time}</span>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+  );
 }
-export default Notifection
+export default Notifection;

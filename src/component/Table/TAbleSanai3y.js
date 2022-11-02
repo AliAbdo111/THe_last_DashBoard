@@ -16,8 +16,7 @@ function TAbleSanai3y() {
       // console.log(id);
       let sanai3y = data.filter((item) => item._id !== id);
       setData([...sanai3y]);
-      axios
-      .delete(`http://localhost:7000/sanai3y/delete/${id}`)
+      axios.delete(`http://localhost:7000/sanai3y/delete/${id}`)
       .then((res) => {});
   }
 
@@ -37,7 +36,7 @@ function TAbleSanai3y() {
           <tr>
             <td>Name</td>
             <td>Email</td>
-            <td>Adress</td>
+            <td>Address</td>
             <td>Status</td>
             <td>skills</td>
             <td>Delete</td>
@@ -53,7 +52,7 @@ function TAbleSanai3y() {
                 <td>{item.email}</td>
                 <td>{item.address}</td>
                 <td>{item.status}</td>
-                <td>{item.skills[0]}</td>
+                <td>{item.skills}</td>
                 <td>
                   <button
                     className="btn btn-danger"
@@ -101,8 +100,18 @@ function TAbleSanai3y() {
 
                       <div className="modal-body">
                         {/* data Snai3y In Details */}
-                        <div className="some_edit_about_snai3y d-flex">
-                          <div className="card-body">
+                        <div className="some_edit_about_snai3y">
+                          <div className="cards-body">
+                          <div>
+                              <h4>Image :</h4>
+                              <img
+                              width={150} 
+                              style={{display:'block'}}
+                                className="img-thumbnail"
+                                src={item.img}
+                                alt=""
+                              />
+                            </div>
                             <div>
                               <h4>First Name :</h4>
                               <h5>{item.firstName}</h5>
@@ -156,16 +165,7 @@ function TAbleSanai3y() {
                               <h4> Skills :</h4>
                               <h5>{item.skills}</h5>
                             </div>
-                            <div>
-                              <h4>Image :</h4>
-                              <img
-                              width={150} 
-                              style={{display:'block'}}
-                                className="img-thumbnail"
-                                src={item.img}
-                                alt=""
-                              />
-                            </div>
+                          
                           
                           </div>
                         </div>
