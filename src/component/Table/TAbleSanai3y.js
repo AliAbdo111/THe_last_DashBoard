@@ -2,9 +2,14 @@ import "./Table.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import _ from "lodash";
+const pageSize = 5;
+
 const baseURL = "http://localhost:7000/sanai3y/all";
 function TAbleSanai3y() {
   const [data, setData] = useState([]);
+  const [pagenetdPost, setPage] = useState([]);
+  const [currentPge, setCurrentPge] = useState('');
   const [serch, setSearch] = useState("");
   useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -12,6 +17,23 @@ function TAbleSanai3y() {
       // console.log("aaaaa");
     });
   }, []);
+    ///////////////////////pagination////////////////
+    console.log(pagenetdPost);
+
+    const pageCount = pagenetdPost ? Math.ceil(data.length / pageSize) : 0;
+    if (pageCount === 0) return null;
+    const pages = _.range(1, pageCount + 1);
+    console.log(pages);
+    const pagination = (pagnum) => {
+      console.log(pagnum);
+      setCurrentPge(pagnum);
+      // setData(pagnum)
+      const startIndex = (pagnum ) * pageSize;
+      const pagenetdPoste = _(data).slice(startIndex).take(pageSize).value();
+      setPage(pagenetdPoste);
+    console.log(startIndex);
+  
+    };
   function deleteRow(id) {
       // console.log(id);
       let sanai3y = data.filter((item) => item._id !== id);

@@ -5,15 +5,16 @@ import Dashboard from "./Pages/Dashboard";
 import LoginPAge from "./Pages/login";
 // import { IconName } from "react-icons/fa";
 import Sidbar from "./component/sidbar/Sidbar";
+import Garud from "./Pages/Garud"
 function App() {
   let token = localStorage.getItem("token");
   return (
     <>
-    
+  
     <Routes>
     <Route path="/" element={<LoginPAge />} />
     <Route path="/Dashboard" element={<Dashboard />}></Route>
-    <Route path="*" element={< Dashboard/>} /> 
+    <Route path="*" element={< Dashboard/>} />
   </Routes>
   </>
   );

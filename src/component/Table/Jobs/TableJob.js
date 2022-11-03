@@ -19,7 +19,7 @@ function TableJob() {
       console.log(response.data.data);
       setData(response.data.data);
       console.log("efect");
-      setPage(_(response.data).slice(0).take(pageSize).value());
+      setPage(_(response.data.data).slice(0).take(pageSize).value());
       console.log(pagenetdPost);
     });
   }, []);
@@ -32,7 +32,8 @@ function TableJob() {
       const sorted = [...data].sort((a, b) =>
         a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );
-      setPage(sorted);
+      // setPage(sorted);
+      setPage(_(sorted).slice(0).take(pageSize).value());
       setOrder("DSC");
     }
     if (order === "DSC") {
@@ -40,7 +41,8 @@ function TableJob() {
       const sorted = [...data].sort((a, b) =>
         a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
       );
-      setPage(sorted);
+      // setPage(sorted);
+      setPage(_(sorted).slice(0).take(pageSize).value());
       setOrder("ASC");
     }
   };
@@ -68,7 +70,12 @@ function TableJob() {
     // setPage(jobs);
     setData([...jobs]);
     console.log(jobs);
-    axios.delete(`http://localhost:7000/Jobs/delete/${id}`).then((res) => {});
+    setPage(_(jobs).slice(0).take(pageSize).value());
+    const token ="6360d23e1cadd7241e2c1049";
+    // localStorage.setItem(token)
+    console.log(jobs);
+   
+    axios.delete(`http://localhost:7000/jobs/delete/${id}`).then((res) => {});
   }
   return (
     <div className="resentOrder">

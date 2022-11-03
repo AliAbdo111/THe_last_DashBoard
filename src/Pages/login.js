@@ -28,7 +28,7 @@ function LoginPAge()
                         // localStorage.setItem("snai3yRole", res.data.data.rule);
                         // localStorage.setItem("Name", res.data.data.firstName +" "+ res.data.data.lastName);
                         // localStorage.setItem("image", res.data.data.image);
-                        navigate("/Sanai3y")
+                        navigate("/Dashboard")
                     }
                     else {
                         console.log("eror")

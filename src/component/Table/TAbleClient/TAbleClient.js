@@ -28,6 +28,12 @@ function TAbleClient() {
       setPage(_(response.data.Data).slice(0).take(pageSize).value());
     });   
   }, []);
+  useEffect(() => {
+      // setData(response.data.Data);
+      setPage(_(data).slice(0).take(pageSize).value());
+      
+  }, [data]);
+  
   const sorting = (col) => {
     if (order === "ASC") {
       const sorted = [...data].sort((a, b) =>
