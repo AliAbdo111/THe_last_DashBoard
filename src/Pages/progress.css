@@ -1,5 +1,8 @@
 @media (max-width:1110px) {
   .col-comp{
-    flex-direction: column;
+    display: block !important;
+  }
+  .notification{
+
   }
 }

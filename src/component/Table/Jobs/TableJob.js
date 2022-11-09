@@ -1,5 +1,18 @@
 import "../Table.css";
 import axios from "axios";
+import { format } from "date-fns";
+import {
+  FaArrowDown,
+  FaArrowUp,
+  FaClock,
+  FaGenderless,
+  FaIdCardAlt,
+  FaPhoneSquareAlt,
+  FaTransgender,
+  FaUserAlt,
+} from "react-icons/fa";
+import { MdDescription, MdOutlineDescription, MdPendingActions } from "react-icons/md";
+import { GoInfo, GoLocation, GoMail, GoPencil, GoTools } from "react-icons/go";
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
 //////////////////constant//////////////////
@@ -10,23 +23,25 @@ const baseURL = "http://localhost:7000/Jobs/all";
 
 function TableJob() {
   const [data, setData] = useState([]);
+// console.log(data.length);
   const [serch, setSearch] = useState("");
   const [pagenetdPost, setPage] = useState([]);
   const [currentPge, setCurrentPge] = useState('');
-  const [order, setOrder] = useState("ASC");
+  const [order, setOrder] = useState('');
   useEffect(() => {
     axios.get(baseURL).then((response) => {
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setData(response.data.data);
-      console.log("efect");
+      // console.log("efect");
       setPage(_(response.data.data).slice(0).take(pageSize).value());
-      console.log(pagenetdPost);
+      // console.log(pagenetdPost);
     });
   }, []);
 
 
   ////////////////////Sorting////////////////////
   const sorting = (col) => {
+    setOrder("ASC")
     if (order === "ASC") {
       
       const sorted = [...data].sort((a, b) =>
@@ -47,35 +62,35 @@ function TableJob() {
     }
   };
   ///////////////////////pagination////////////////
-  console.log(pagenetdPost);
+  // console.log(pagenetdPost);
 
   const pageCount = pagenetdPost ? Math.ceil(data.length / pageSize) : 0;
   if (pageCount === 0) return null;
   const pages = _.range(1, pageCount + 1);
-  console.log(pages);
+  // console.log(pages);
   const pagination = (pagnum) => {
-    console.log(pagnum);
+    // console.log(pagnum);
     setCurrentPge(pagnum);
     // setData(pagnum)
     const startIndex = (pagnum ) * pageSize;
     const pagenetdPoste = _(data).slice(startIndex).take(pageSize).value();
     setPage(pagenetdPoste);
-  console.log(startIndex);
+  // console.log(startIndex);
 
   };
 
   function deleteRow(id) {
-    console.log(id);
+    // console.log(id);
     let jobs = data.filter((item) => item._id !== id);
     // setPage(jobs);
     setData([...jobs]);
-    console.log(jobs);
+    // console.log(jobs);
     setPage(_(jobs).slice(0).take(pageSize).value());
-    const token ="6360d23e1cadd7241e2c1049";
+    // const token ="6360d23e1cadd7241e2c1049";
     // localStorage.setItem(token)
-    console.log(jobs);
-   
-    axios.delete(`http://localhost:7000/jobs/delete/${id}`).then((res) => {});
+    // console.log(jobs);
+   const token = localStorage.getItem("token")
+    axios.delete(`http://localhost:7000/jobs/delete/${id}`,{headers:{authorization:token}}).then((res) => {});
   }
   return (
     <div className="resentOrder">
@@ -93,8 +108,8 @@ function TableJob() {
         <table>
           <thead>
             <tr>
-              <td> Client Name </td>
-              <td onClick={() => sorting("title")}> title</td>
+              <td> Client ID </td>
+              <td onClick={() => sorting("title")}>{order=="ASC"?<FaArrowDown/>:order=="DSC"?<FaArrowUp/>:''} title</td>
               <td onClick={() => sorting("city")}>city</td>
               <td onClick={() => sorting("address")}>address</td>
               <td onClick={() => sorting("status")}>status</td>
@@ -104,19 +119,19 @@ function TableJob() {
           </thead>
           <tbody>
             {pagenetdPost
-              // .filter((item) => 
-              // item.title.toLowerCase().includes(serch)||
-              // item.address.toLowerCase().includes(serch)||
-              // item.city.toLowerCase().includes(serch)||
-              // item.status.toLowerCase().includes(serch)
-              // )
+              .filter((item) => 
+              item.title?.toLowerCase().includes(serch)||
+              item.address?.toLowerCase().includes(serch)||
+              item.city?.toLowerCase().includes(serch)||
+              item.status?.toLowerCase().includes(serch)
+              )
               .map((item,index) => (
-                <tr key={item._id}>
+                <tr key={index}>
                   <td>{item.clientId}</td>
                   <td>{item.title}</td>
                   <td>{item.city}</td>
                   <td>{item.address}</td>
-                  <td>{item.status}</td>
+                  <td className="status">{item.status=="pending" ? <span className="pending">{item.status}</span>:item.status=="compelete" ? <span className="delivered">{item.status}</span>:<span className="inprogress">{item.status}</span>}</td>
                   <td>
                     <button
                       className="btn btn-danger"
@@ -147,12 +162,12 @@ function TableJob() {
                 >
                   <div className="modal-dialog">
                     <div className="modal-content">
-                      <div className="modal-header edit_header">
+                      <div className=" d-flex justify-content-between p-3 align-items-center " dir="rtl" >
                         <h1
                           className="modal-title fs-2"
                           id="staticBackdropLabel"
                         >
-                          التفاصيل حول العميل
+                          التفاصيل حول الوظائف
                         </h1>
 
                         <button
@@ -166,66 +181,98 @@ function TableJob() {
                       <div className="modal-body">
                         {/* data Snai3y In Details */}
                         <div className="some_edit_about_snai3y d-flex">
-                          <div className="cards-body">
-                          <div>
-                              <h4>Image :</h4>
+                        <div className="cards-body">
+                  
+                       <div className="leftTitle">
+                       <div className="titleimg">
                               <img
-                              width={150} 
-                              // height={250}
+                                width={150}
+                                style={{ display: "block" }}
                                 className="img-thumbnail"
                                 src={item.images}
                                 alt=""
                               />
                             </div>
-                            <div>
-                              
-                              <h4>title :</h4>
-                              <h5>{item.title}</h5>
-                            </div>
-                            <div>
-                              <h4>description :</h4>
-                              <h5>{item.description}</h5>
-                            </div>
-                           
-                            <div>
-                              <h4>city:</h4>
-                              <h5>{item.city}</h5>
-                            </div>
-                            <div>
-                              <h4>address :</h4>
-                              <h5>{item.address}</h5>
-                            </div>
+                         <div className="titleContent">
+                              <div className="parentTitles">
+                                <div className="titleCard">
+                                  <FaUserAlt
+                                    style={{ color: "#ffb200", fontSize: 22 }}
+                                  />
+                                  <h5>{`${item.clientData?.firstName} ${item.clientData?.lastName}`}</h5>
+                                </div>
+                               </div>
+                              <div className="parentTitles">
+                                 <div className="titleCard">
+                                  <GoLocation
+                                    style={{ color: "#ffb200", fontSize: 22 }}
+                                  />
+                                  <h5>{item.address}</h5>
+                                </div>
+                              </div>
+                              <div className="parentTitles">
+                              <div className="titleCard">
+                                  <GoLocation
+                                    style={{ color: "#ffb200", fontSize: 22 }}
+                                  />
+                                  <h5>{item.city}</h5>
+                                </div>
                           
-                            <div>
-                              <h4>category :</h4>
-                              <h5 className="card-text">{item.category}</h5>
-                            </div>
-                            <div>
-                              <h4>hiredDate :</h4>
-                              <h5 className="card-title">{item.hiredDate}</h5>
-                            </div>
-                            <div>
-                              <h4>status :</h4>
-                              <h5>{item.status}</h5>
-                            </div>
-                            <div>
-                              <h4>proposals :</h4>
-                              <h5>{item.proposals}</h5>
-                            </div>
-                            <div>
-                              <h4>Sanai3y Id :</h4>
-                              <h5>{item.sanai3yId}</h5>
-                            </div>
-                            <div>
-                              <h4>client Id :</h4>
-                              <h5>{item.clientId}</h5>
-                            </div>                                      
-                          
+                                <div className="titleCard">
+                                  <MdPendingActions
+                                    style={{ color: "#ffb200", fontSize: 20 }}
+                                  />
+                                  <h5>{item.status}</h5>
+                                </div>
+                              </div>
+                         </div>
+                       </div>
+                          <div className="rightTitle">
+                              <div className="titleCard">
+                                <FaClock
+                                  style={{ color: "#ffb200", fontSize: 22 }}
+                                />
+                                <h5>{`${format(
+                                  new Date(item.hiredDate),
+                                  "d/MMM/yyyy"
+                                )}`}</h5>
+                              </div>
+                              <div className="parentTitles">
+                                <div>
+                                  <div className="titleCard">
+                                    <FaUserAlt
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5>{`[${[...item.proposals]}]`}</h5>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="titleCard">
+                                    <GoTools
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5>{item.category}</h5>
+                                  </div>
+                                  <div className="titleCard">
+                                    <GoInfo
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5 className="card-title">{item.title}</h5>
+                                  </div>
+                                  <div className="titleCard">
+                                  <MdOutlineDescription
+                                   style={{ color: "#ffb200", fontSize: 25 }}
+                                  />
+                                  <h5 style={{width:200}}>{item.description}</h5>
+                                </div>
+                                </div>
+                              </div>
+                          </div>
                           </div>
                         </div>
                       </div>
 
-                      <div className="modal-footer edit_footer_job p-0">
+                      <div className="modal-footer edit_footer_job  p-2" dir="rtl">
                         <button
                           type="button"
                           className="btn btn-secondary edit_close_button"

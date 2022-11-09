@@ -2,6 +2,16 @@ import "./Table.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import {
+  FaClock,
+  FaGenderless,
+  FaIdCardAlt,
+  FaPhoneSquareAlt,
+  FaTransgender,
+  FaUserAlt,
+} from "react-icons/fa";
+import { GoInfo, GoLocation, GoMail, GoPencil, GoTools } from "react-icons/go";
+import { format } from "date-fns";
 import _ from "lodash";
 const pageSize = 5;
 
@@ -9,7 +19,7 @@ const baseURL = "http://localhost:7000/sanai3y/all";
 function TAbleSanai3y() {
   const [data, setData] = useState([]);
   const [pagenetdPost, setPage] = useState([]);
-  const [currentPge, setCurrentPge] = useState('');
+  const [currentPge, setCurrentPge] = useState("");
   const [serch, setSearch] = useState("");
   useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -17,28 +27,28 @@ function TAbleSanai3y() {
       // console.log("aaaaa");
     });
   }, []);
-    ///////////////////////pagination////////////////
-    console.log(pagenetdPost);
+  ///////////////////////pagination////////////////
+  console.log(pagenetdPost);
 
-    const pageCount = pagenetdPost ? Math.ceil(data.length / pageSize) : 0;
-    if (pageCount === 0) return null;
-    const pages = _.range(1, pageCount + 1);
-    console.log(pages);
-    const pagination = (pagnum) => {
-      console.log(pagnum);
-      setCurrentPge(pagnum);
-      // setData(pagnum)
-      const startIndex = (pagnum ) * pageSize;
-      const pagenetdPoste = _(data).slice(startIndex).take(pageSize).value();
-      setPage(pagenetdPoste);
+  const pageCount = pagenetdPost ? Math.ceil(data.length / pageSize) : 0;
+  if (pageCount === 0) return null;
+  const pages = _.range(1, pageCount + 1);
+  console.log(pages);
+  const pagination = (pagnum) => {
+    console.log(pagnum);
+    setCurrentPge(pagnum);
+    // setData(pagnum)
+    const startIndex = pagnum * pageSize;
+    const pagenetdPoste = _(data).slice(startIndex).take(pageSize).value();
+    setPage(pagenetdPoste);
     console.log(startIndex);
-  
-    };
+  };
   function deleteRow(id) {
-      // console.log(id);
-      let sanai3y = data.filter((item) => item._id !== id);
-      setData([...sanai3y]);
-      axios.delete(`http://localhost:7000/sanai3y/delete/${id}`)
+    // console.log(id);
+    let sanai3y = data.filter((item) => item._id !== id);
+    setData([...sanai3y]);
+    axios
+      .delete(`http://localhost:7000/sanai3y/delete/${id}`)
       .then((res) => {});
   }
 
@@ -104,7 +114,7 @@ function TAbleSanai3y() {
                 >
                   <div className="modal-dialog">
                     <div className="modal-content">
-                      <div className="modal-header edit_header">
+                      <div className=" d-flex justify-content-between  p-3 align-items-center" dir="rtl">
                         <h1
                           className="modal-title fs-2"
                           id="staticBackdropLabel"
@@ -124,76 +134,109 @@ function TAbleSanai3y() {
                         {/* data Snai3y In Details */}
                         <div className="some_edit_about_snai3y">
                           <div className="cards-body">
-                          <div>
-                              <h4>Image :</h4>
+                  
+                       <div className="leftTitle">
+                       <div className="titleimg">
                               <img
-                              width={150} 
-                              style={{display:'block'}}
+                                width={150}
+                                style={{ display: "block" }}
                                 className="img-thumbnail"
                                 src={item.img}
                                 alt=""
                               />
                             </div>
-                            <div>
-                              <h4>First Name :</h4>
-                              <h5>{item.firstName}</h5>
-                            </div>
-                            <div>
-                              <h4>Last Name :</h4>
-                              <h5>{item.lastName}</h5>
-                            </div>
-                           
-                            <div>
-                              <h4>Phone Number :</h4>
-                              <h5>{item.phoneNumber}</h5>
-                            </div>
-                            <div>
-                              <h4>Email :</h4>
-                              <h5>{item.email}</h5>
-                            </div>
-                            <div>
-                              <h4>City :</h4>
-                              <h5>اسوان</h5>
-                            </div>
-                            <div>
-                              <h4>National Id :</h4>
-                              <h5 className="card-text">{item.nationalId}</h5>
-                            </div>
-                            <div>
-                              <h4>title :</h4>
-                              <h5 className="card-title">{item.title}</h5>
-                            </div>
-                            <div>
-                              <h4>Age :</h4>
-                              <h5>{item.age}</h5>
-                            </div>
-                            <div>
-                              <h4>Joined Date :</h4>
-                              <h5>{item.joinedDate}</h5>
-                            </div>
-                            <div>
-                              <h4>Gender :</h4>
-                              <h5>{item.gender}</h5>
-                            </div>
-                            <div>
-                              <h4>Rule :</h4>
-                              <h5>{item.rule}</h5>
-                            </div>
-                            <div>
-                              <h4> Address :</h4>
-                              <h5>{item.address}</h5>
-                            </div>
-                            <div>
-                              <h4> Skills :</h4>
-                              <h5>{item.skills}</h5>
-                            </div>
+                         <div className="titleContent">
+                              <div className="parentTitles">
+                                <div className="titleCard">
+                                  <FaUserAlt
+                                    style={{ color: "#ffb200", fontSize: 20 }}
+                                  />
+                                  <h5>{`${item.firstName} ${item.lastName}`}</h5>
+                                </div>
+                                <div className="titleCard">
+                                  <FaPhoneSquareAlt
+                                    style={{ color: "#ffb200", fontSize: 20 }}
+                                  />
+                                  <h5>{item.phoneNumber}</h5>
+                                </div>
+                              </div>
+                              <div className="parentTitles">
+                                <div className="titleCard">
+                                  <GoMail
+                                    style={{ color: "#ffb200", fontSize: 20 }}
+                                  />
+                                  <h5>{item.email}</h5>
+                                </div>
+                                <div className="titleCard">
+                                  <GoLocation
+                                    style={{ color: "#ffb200", fontSize: 22 }}
+                                  />
+                                  <h5>{item.address}</h5>
+                                </div>
+                              </div>
+                              <div className="parentTitles">
+                                <div className="titleCard">
+                                  <FaIdCardAlt
+                                    style={{ color: "#ffb200", fontSize: 20 }}
+                                  />
+                                  <h5 className="card-text">{item.nationalId}</h5>
+                                </div>
                           
-                          
+                                <div className="titleCard">
+                                  <GoPencil
+                                    style={{ color: "#ffb200", fontSize: 20 }}
+                                  />
+                                  <h5>{item.age}</h5>
+                                </div>
+                              </div>
+                         </div>
+                       </div>
+                          <div className="rightTitle">
+                              <div className="titleCard">
+                                <FaClock
+                                  style={{ color: "#ffb200", fontSize: 22 }}
+                                />
+                                <h5>{`${format(
+                                  new Date(item.joinedDate),
+                                  "d/MMM/yyyy"
+                                )}`}</h5>
+                              </div>
+                              <div className="parentTitles">
+                                <div>
+                                  <div className="titleCard">
+                                    <FaTransgender
+                                      style={{ color: "#ffb200", fontSize: 22 }}
+                                    />
+                                    <h5>{item.gender}</h5>
+                                  </div>
+                                  <div className="titleCard">
+                                    <FaUserAlt
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5>{item.rule}</h5>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="titleCard">
+                                    <GoTools
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5>{item.skills}</h5>
+                                  </div>
+                                  <div className="titleCard">
+                                    <GoInfo
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5 className="card-title">{item.title}</h5>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
                           </div>
                         </div>
                       </div>
 
-                      <div className="modal-footer edit_footer_job p-0">
+                      <div className="modal-footer edit_footer_job  p-2" dir="rtl">
                         <button
                           type="button"
                           className="btn btn-secondary edit_close_button"

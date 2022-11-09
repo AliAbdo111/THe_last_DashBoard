@@ -6,14 +6,15 @@
     flex-direction: row;
     flex-wrap: wrap;
     background-color: var(--yellow);
-    justify-content: space-evenly;
+    justify-content: space-between;
     /* height: 250px;  */
     border: none;
 
 }
 .card .card1{
     position: relative;
-    background-color: rgb(248,249,250);
+    background: linear-gradient(90deg,#84d9d2,#07cdae);
+    color: aliceblue;
     padding: 20px;
     margin-bottom: 20px;
     border-radius:.5rem;
@@ -38,24 +39,21 @@
     position: relative;
     font-weight: 500;
     font-size: 2.5em;
-    color:var(--black)  ;
-
+    color:  aliceblue;
 }
 .card .card1 .namecard
  {
-color:  var(--black);
+    color:  aliceblue;
 font-size:1.5em ;
 margin-top:5px ;
 }
 .card .card1 .iconBox
  {
- color:  var(--black);
+ color:  aliceblue;
 font-size:2.5em ;
 margin-right: 10px;
 }
-.card .card1:hover{
-    background-color:  #031737;
-}
+
 .card .card1:hover .namecard,
 .card .card1:hover .unmber,
 .card .card1:hover .iconBox{
