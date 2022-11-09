@@ -1,11 +1,15 @@
 import "../Table.css";
 import axios from "axios";
 import _ from "lodash";
+import {  FaTrashAlt } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 //////////////////constant//////////////////
 const pageSize = 5;
 const baseURL = "http://localhost:7000/Jobs/all";
 
+
+
+// TAbleSanai3y
 /////////////////commponent///////////////////
 
 function TableJob() {
@@ -16,15 +20,15 @@ function TableJob() {
   const [order, setOrder] = useState("ASC");
   useEffect(() => {
     axios.get(baseURL).then((response) => {
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setData(response.data.data);
       console.log("efect");
       setPage(_(response.data.data).slice(0).take(pageSize).value());
-      console.log(pagenetdPost);
+      // console.log(pagenetdPost);
     });
   }, []);
 
-
+console.log(currentPge)
   ////////////////////Sorting////////////////////
   const sorting = (col) => {
     if (order === "ASC") {
@@ -47,20 +51,20 @@ function TableJob() {
     }
   };
   ///////////////////////pagination////////////////
-  console.log(pagenetdPost);
+  // console.log(pagenetdPost);
 
   const pageCount = pagenetdPost ? Math.ceil(data.length / pageSize) : 0;
   if (pageCount === 0) return null;
   const pages = _.range(1, pageCount + 1);
-  console.log(pages);
+  // console.log(pages);
   const pagination = (pagnum) => {
-    console.log(pagnum);
+    // console.log(pagnum);
     setCurrentPge(pagnum);
     // setData(pagnum)
     const startIndex = (pagnum ) * pageSize;
     const pagenetdPoste = _(data).slice(startIndex).take(pageSize).value();
     setPage(pagenetdPoste);
-  console.log(startIndex);
+  // console.log(startIndex);
 
   };
 
@@ -84,7 +88,9 @@ function TableJob() {
         <input
           type="text"
           className="search"
-          onChange={(ev) => setSearch(ev.target.value)}
+          onChange={(ev) =>{
+            const inputSearch=ev.target.value.toLocaleLowerCase().trim()
+             setSearch(inputSearch)}}
         />
       </div>
       {!data ? (
@@ -124,7 +130,7 @@ function TableJob() {
                         deleteRow(item._id);
                       }}
                     >
-                      delete
+                    <  FaTrashAlt />
                     </button>
                   </td>
                   <td>

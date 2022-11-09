@@ -25,9 +25,7 @@ function LoginPAge()
                         // console.log(res)
                         console.log("object");
                         localStorage.setItem("token", res.headers.authorization);
-                        // localStorage.setItem("snai3yRole", res.data.data.rule);
-                        // localStorage.setItem("Name", res.data.data.firstName +" "+ res.data.data.lastName);
-                        // localStorage.setItem("image", res.data.data.image);
+                         console.log("hello ")
                         navigate("/Dashboard")
                     }
                     else {

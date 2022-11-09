@@ -1,6 +1,7 @@
 import "../Table.css";
 import axios from "axios";
 import _ from "lodash";
+import {  FaTrashAlt } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import {
   FaHome,
@@ -39,14 +40,14 @@ function TAbleClient() {
       const sorted = [...data].sort((a, b) =>
         a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );
-      setPage(sorted);
+      setPage(_(sorted).slice(0).take(pageSize).value());
       setOrder("DSC");
     }
     if (order === "DSC") {
       const sorted = [...data].sort((a, b) =>
         a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
       );
-      setPage(sorted);
+        setPage(_(sorted).slice(0).take(pageSize).value());
       setOrder("ASC");
     }
   };
@@ -78,7 +79,9 @@ function TAbleClient() {
           type="text"
           placeholder="Search About client"
           className="search"
-          onChange={(ev) => setSearch(ev.target.value)}
+          onChange={(ev) => {
+            const inputSearch=ev.target.value.toLocaleLowerCase().trim()
+            setSearch(inputSearch)}}
         />
       </div>
 
@@ -89,7 +92,7 @@ function TAbleClient() {
             <td onClick={() => sorting("email")}>Email</td>
             <td onClick={() => sorting("address")}>Adress</td>
             <td onClick={() => sorting("gender")}>gender</td>
-            <td>National ID</td>
+            <td onClick={() => sorting("gender")}>National ID</td>
             <td>Delete</td>
             <td>Details</td>
           </tr>
@@ -98,14 +101,15 @@ function TAbleClient() {
           {pagenetdPost
             .filter(
               (item) =>
-                item.firstName.toLowerCase().includes(search) ||
+                item.firstName.concat(" ",item.lastName).toLowerCase().includes(search) ||
                 item.address.toLowerCase().includes(search) ||
                 item.email.toLowerCase().includes(search) ||
-                item.gender.toLowerCase().includes(search)
+                item.gender.toLowerCase().includes(search)||
+                item.nationalId.toLowerCase().includes(search)
             )
             .map((item,index) => (
               <tr key={index}>
-                <td>{item.firstName}</td>
+                <td>{`${item.firstName} ${item.lastName}`}</td>
                 <td>{item.email}</td>
                 <td>{item.address}</td>
                 <td>{item.gender}</td>
@@ -115,7 +119,7 @@ function TAbleClient() {
                     className="btn btn-danger"
                     onClick={() => deleteRow(item._id)}
                   >
-                    Delete
+                   <  FaTrashAlt />
                   </button>
                 </td>
                 <td>
