@@ -14,11 +14,15 @@ import {
 import { MdDescription, MdOutlineDescription, MdPendingActions } from "react-icons/md";
 import { GoInfo, GoLocation, GoMail, GoPencil, GoTools } from "react-icons/go";
 import _ from "lodash";
+import {  FaTrashAlt } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 //////////////////constant//////////////////
 const pageSize = 5;
 const baseURL = "http://localhost:7000/Jobs/all";
 
+
+
+// TAbleSanai3y
 /////////////////commponent///////////////////
 
 function TableJob() {
@@ -38,7 +42,7 @@ function TableJob() {
     });
   }, []);
 
-
+console.log(currentPge)
   ////////////////////Sorting////////////////////
   const sorting = (col) => {
     setOrder("ASC")
@@ -99,7 +103,9 @@ function TableJob() {
         <input
           type="text"
           className="search"
-          onChange={(ev) => setSearch(ev.target.value)}
+          onChange={(ev) =>{
+            const inputSearch=ev.target.value.toLocaleLowerCase().trim()
+             setSearch(inputSearch)}}
         />
       </div>
       {!data ? (
@@ -108,7 +114,7 @@ function TableJob() {
         <table>
           <thead>
             <tr>
-              <td> Client ID </td>
+              <td> Name </td>
               <td onClick={() => sorting("title")}>{order=="ASC"?<FaArrowDown/>:order=="DSC"?<FaArrowUp/>:''} title</td>
               <td onClick={() => sorting("city")}>city</td>
               <td onClick={() => sorting("address")}>address</td>
@@ -127,7 +133,7 @@ function TableJob() {
               )
               .map((item,index) => (
                 <tr key={index}>
-                  <td>{item.clientId}</td>
+                  <td>{`${item.clientData?.firstName} ${item.clientData?.lastName}`}</td>
                   <td>{item.title}</td>
                   <td>{item.city}</td>
                   <td>{item.address}</td>
@@ -139,7 +145,7 @@ function TableJob() {
                         deleteRow(item._id);
                       }}
                     >
-                      delete
+                    <  FaTrashAlt />
                     </button>
                   </td>
                   <td>

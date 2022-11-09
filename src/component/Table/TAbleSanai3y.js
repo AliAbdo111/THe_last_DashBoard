@@ -1,4 +1,4 @@
-import "./Table.css";
+import './Table.css'
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -13,84 +13,119 @@ import {
 import { GoInfo, GoLocation, GoMail, GoPencil, GoTools } from "react-icons/go";
 import { format } from "date-fns";
 import _ from "lodash";
-const pageSize = 5;
+import {  FaTrashAlt } from "react-icons/fa";
 
+
+/////constanet/////
+const pageSize = 5;
 const baseURL = "http://localhost:7000/sanai3y/all";
+////commponent//////
+
 function TAbleSanai3y() {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
   const [pagenetdPost, setPage] = useState([]);
   const [currentPge, setCurrentPge] = useState("");
-  const [serch, setSearch] = useState("");
+  const [order, setOrder] = useState("ASC");
+
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setData(response.data.Data);
-      // console.log("aaaaa");
-    });
+      setPage(_(response.data.Data).slice(0).take(pageSize).value());
+    });   
   }, []);
-  ///////////////////////pagination////////////////
-  console.log(pagenetdPost);
+  useEffect(() => {
+      // setData(response.data.Data);
+      setPage(_(data).slice(0).take(pageSize).value());
+      
+  }, [data]);
+  
+  const sorting = (col) => {
+    if (order === "ASC") {
+      const sorted = [...data].sort((a, b) =>
+        a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+      );
+      setPage(_(sorted).slice(0).take(pageSize).value());
+      setOrder("DSC");
+    }
+    if (order === "DSC") {
+      const sorted = [...data].sort((a, b) =>
+        a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+      );
+      setPage(_(sorted).slice(0).take(pageSize).value());
+      setOrder("ASC");
+    }
+  };
 
+  /////////////////////pagination/////////////////
   const pageCount = pagenetdPost ? Math.ceil(data.length / pageSize) : 0;
   if (pageCount === 0) return null;
   const pages = _.range(1, pageCount + 1);
-  console.log(pages);
   const pagination = (pagnum) => {
     console.log(pagnum);
     setCurrentPge(pagnum);
     // setData(pagnum)
-    const startIndex = pagnum * pageSize;
+    const startIndex = (pagnum - 1) * pageSize;
     const pagenetdPoste = _(data).slice(startIndex).take(pageSize).value();
     setPage(pagenetdPoste);
-    console.log(startIndex);
   };
+  /////////////////////////////delet function///////////////////////////////////
   function deleteRow(id) {
     // console.log(id);
-    let sanai3y = data.filter((item) => item._id !== id);
-    setData([...sanai3y]);
-    axios
-      .delete(`http://localhost:7000/sanai3y/delete/${id}`)
-      .then((res) => {});
+    let Sanai3y = data.filter((item) => item._id !== id);
+    setData([...Sanai3y]);
+    axios.delete(`http://localhost:7000/sanai3y/delete/${id}`).then((res)=>{})
   }
-
   return (
     <div className="resentOrder">
       <div className="cardHeadr">
-        <h2> Sanai3y Register</h2>
+        <h2>Sanai3y Register</h2>
         <input
           type="text"
           placeholder="Search About client"
           className="search"
-          onChange={(ev) => setSearch(ev.target.value)}
+          onChange={(ev) =>{
+            const inputSearch=ev.target.value.toLocaleLowerCase().trim()
+            setSearch(inputSearch)}}
         />
       </div>
+
       <table>
         <thead>
           <tr>
-            <td>Name</td>
-            <td>Email</td>
-            <td>Address</td>
-            <td>Status</td>
-            <td>skills</td>
+            <td onClick={() => sorting("firstName")}>Name</td>
+            <td onClick={() => sorting("email")}>Email</td>
+            <td onClick={() => sorting("address")}>Adress</td>
+            <td onClick={() => sorting("gender")}>gender</td>
+            <td onClick={() => sorting("nationalId")}>National ID</td>
             <td>Delete</td>
             <td>Details</td>
           </tr>
         </thead>
         <tbody>
-          {data
-            .filter((item) => item.firstName.toLowerCase().includes(serch))
-            .map((item) => (
-              <tr key={item._id}>
-                <td>{item.firstName}</td>
+          {pagenetdPost
+            .filter(
+              (item) =>
+            
+                item.firstName.concat(" ",item.lastName).toLowerCase().includes(search) ||
+                item.address.toLowerCase().includes(search) ||
+                item.email.toLowerCase().includes(search) ||
+                item.gender.toLowerCase().includes(search)||
+                item.nationalId.toLowerCase().includes(search)
+            )
+            .map((item,index) => (
+              <tr key={index}>
+                <td>{`${item.firstName} ${item.lastName}`}</td>
                 <td>{item.email}</td>
                 <td>{item.address}</td>
-                <td>{item.status}</td>
-                <td>{item.skills}</td>
+                <td>{item.gender}</td>
+                <td>{item.nationalId}</td>
                 <td>
                   <button
                     className="btn btn-danger"
                     onClick={() => deleteRow(item._id)}
                   >
-                    Delete
+                   <  FaTrashAlt />
                   </button>
                 </td>
                 <td>
@@ -102,7 +137,6 @@ function TAbleSanai3y() {
                     Details
                   </button>
                 </td>
-
                 <div
                   className="modal modal-xl fade"
                   id={`Taha${item._id}`}
@@ -119,7 +153,7 @@ function TAbleSanai3y() {
                           className="modal-title fs-2"
                           id="staticBackdropLabel"
                         >
-                          التفاصيل حول الصنايعى
+                          التفاصيل حول الصنايعي
                         </h1>
 
                         <button
@@ -252,6 +286,20 @@ function TAbleSanai3y() {
             ))}
         </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+        <ul className="pagination">
+          {pages.map((page) => (
+            <li>
+              <p
+                className="page-link btn btn-succes"
+                onClick={() => pagination(page)}
+              >
+                {page}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 }

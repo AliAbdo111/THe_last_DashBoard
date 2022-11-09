@@ -25,7 +25,8 @@
     
   /* overflow-x: auto; */
     width: 100%;
-    margin: 15px 0;
+    /* margin: 15px 0; */
+    margin-bottom: 15px;
     position: relative;
     display: grid;
     padding: 20px;
@@ -84,11 +85,12 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
     /* color: white; */
  }
  table tbody tr td {
-    padding:10px 5px ;
+    padding:10px 7px ;
  }
  .status .delivered{
   padding: 2px 4px;
   background: var(--green);
+  border-radius: 5px;
   color:white ;
   font-size: 14px;
   font-weight: 500; 
@@ -97,6 +99,7 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 2px 4px;
     background:yellow;
     color:#000 ;
+    border-radius: 5px;
     font-size: 14px;
     font-weight: 500; 
    }
@@ -110,6 +113,7 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
    .status .inprogress{
     padding: 2px 4px;
     background:blue;
+    border-radius: 5px;
     color:white ;
     font-size: 14px;
     font-weight: 500; 

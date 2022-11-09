@@ -1,3 +1,6 @@
+.col-comp{
+  /* align-items: baseline; */
+}
 @media (max-width:1110px) {
   .col-comp{
     display: block !important;
