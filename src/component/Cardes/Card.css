@@ -13,7 +13,7 @@
 }
 .card .card1{
     position: relative;
-    background: linear-gradient(90deg,#84d9d2,#07cdae);
+    background: linear-gradient(-90deg,#84d9d2,#07cdae);
     color: aliceblue;
     padding: 20px;
     margin-bottom: 20px;
@@ -58,6 +58,25 @@ margin-right: 10px;
 .card .card1:hover .unmber,
 .card .card1:hover .iconBox{
     color: white;
+}
+.card .Jobs,.card .Clients,.card .Sanai3y{
+    /* display: none; */
+}
+
+.card .Jobs .statistic1,.card .Jobs .statistic2,.card .Jobs .statistic3{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.card .Sanai3y .statistic1,.card .Sanai3y .statistic2,.card .Sanai3y .statistic3{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.card .Clients .statistic1,.card .Clients .statistic2,.card .Clients .statistic3{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 @media (max-width:800px){
     .card .card1{

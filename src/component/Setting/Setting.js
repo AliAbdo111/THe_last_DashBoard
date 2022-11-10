@@ -22,7 +22,7 @@ function Setting() {
   return (
 
     <div className="row">
-      <div className="mb-4 col-xxl-4 col-md-6 col-12">
+      <div className="mb-4 col-md-6 col-12">
     <div className="shadow rounded-3">
       <div className="border-bottom border-2 card-header bg-light ">
         <h2 className="fs-5 fw-bold mb-0 p-3">New Sanai3y </h2>
@@ -63,7 +63,7 @@ function Setting() {
       </div>
     </div>
   </div>
-    <div className="mb-4 col-xxl-4 col-md-6 col-12">
+    <div className="mb-4 col-md-6 col-12">
     <div className="shadow cards rounded-3">
       <div className="border-bottom border-2 card-header bg-light">
         <h2 className="fs-5 fw-bold mb-0 p-3">New Client </h2>

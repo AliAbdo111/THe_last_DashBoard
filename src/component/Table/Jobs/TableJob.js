@@ -126,6 +126,8 @@ console.log(currentPge)
           <tbody>
             {pagenetdPost
               .filter((item) => 
+              item.clientData?.firstName.toLowerCase().includes(serch)||
+              item.clientData?.firstName.concat(" ", item.clientData?.lastName).toLowerCase().includes(serch) ||
               item.title?.toLowerCase().includes(serch)||
               item.address?.toLowerCase().includes(serch)||
               item.city?.toLowerCase().includes(serch)||

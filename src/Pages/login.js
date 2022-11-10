@@ -1,6 +1,7 @@
 import Login from "../component/Login/Login";
 import Http from '../component/Login/Http';
 import { useFormik } from 'formik';
+import React, { useState, createRef, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './login.css';
@@ -9,7 +10,7 @@ import { Fragment } from "react";
 import coverLogin from './loginCover.jpeg';
 function LoginPAge()
 {
-    
+    const [logErr, setLogErr] = useState(false)
     let navigate = useNavigate()
     const loginFormik = useFormik(
         {
@@ -29,12 +30,17 @@ function LoginPAge()
                         // localStorage.setItem("Name", res.data.data.firstName +" "+ res.data.data.lastName);
                         // localStorage.setItem("image", res.data.data.image);
                         navigate("/Dashboard")
+                        setLogErr(false)
                     }
                     else {
                         console.log("eror")
+                        setLogErr(true)
+
                     }
                 }).catch((err) => {
                     console.log(err)
+                    console.log("err")
+                    setLogErr(true)
                 })
             },
 
@@ -61,6 +67,7 @@ function LoginPAge()
                 <div className='icon_login'>
                     <i className="fa-solid fa-right-to-bracket fa-flip-horizontal"></i>
                     <h3>أهلا بك</h3>
+                    {logErr==true?<h4 className='alert alert-danger py-0 px-1 mb-2'>الايميل او الرقم السرى غير صحيح</h4>:null}
                 </div>
             </div>
         </div>
@@ -107,6 +114,7 @@ function LoginPAge()
                         </box>
                         {/* <input  /> */}
                         <small className={loginFormik.touched.password && loginFormik.errors.password ? 'alert alert-danger py-0 px-1 mb-2' : null}>{loginFormik.touched.password && loginFormik.errors.password}</small>
+                        
                     </div>
 
                     {/* 2 column grid layout for inline styling */}
