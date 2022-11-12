@@ -61,23 +61,22 @@ margin-right: 10px;
 }
 .card .Jobs,.card .Clients,.card .Sanai3y{
     /* display: none; */
+    /* position: relative;
+    left: 37%; */
+    /* text-align: center; */
+    /* border: #bfbfbf 1px solid; */
+    padding: 15px;
+    /* background-color: #fff; */
+    /* border-radius: 10px; */
+    margin-bottom: 20px;
 }
 
-.card .Jobs .statistic1,.card .Jobs .statistic2,.card .Jobs .statistic3{
+.card .statistic1,.card .statistic2,.card .statistic3{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin: 13px 0;
 }
-.card .Sanai3y .statistic1,.card .Sanai3y .statistic2,.card .Sanai3y .statistic3{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-.card .Clients .statistic1,.card .Clients .statistic2,.card .Clients .statistic3{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
+
 @media (max-width:800px){
     .card .card1{
    width: 100%;

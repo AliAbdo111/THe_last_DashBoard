@@ -135,11 +135,15 @@ const inProgress = []
       )
     });
   }, []);
+  const[showsanai3y,setShowsanai3y]=useState(false)
+  const[showjob,setShowjob]=useState(false)
+  const[showclient,setShowclient]=useState(false)
+  // console.log(showjob);
       return (
         <>
      
         <div className="card">
-          <div className="card1 show1 ">
+          <div className="card1 show1 "onClick={()=>{showjob?setShowjob(false):setShowjob(true)}}>
             <div>
               <div className="iconBox">
                 <FaEye/>
@@ -150,7 +154,7 @@ const inProgress = []
             </section>
             </div>
           </div>
-          <div className="card1 show2" style={{background: "linear-gradient(-90deg,#90caf9,#047edf 99%)"}}>
+          <div className="card1 show2" onClick={()=>{showsanai3y?setShowsanai3y(false):setShowsanai3y(true)}} style={{background: "linear-gradient(-90deg,#90caf9,#047edf 99%)"}}>
             <div>
               <div className="iconBox">
               <FaUserAlt/>
@@ -161,7 +165,7 @@ const inProgress = []
             </section>
             </div>
           </div>
-          <div className="card1 show3 " style={{background: "linear-gradient(-90deg,#ffbf96,#fe7096)"}}>
+          <div className="card1 show3 " onClick={()=>{showclient?setShowclient(false):setShowclient(true)}} style={{background: "linear-gradient(-90deg,#ffbf96,#fe7096)"}}>
             <div>
               <div className="iconBox">
               <FaUserAlt/>
@@ -174,7 +178,7 @@ const inProgress = []
           </div>
          
         
-        <div style={{width:"25%"}} className="Jobs">
+       {showjob? <div style={{width:"25%"}}  className="Jobs shadow rounded-3 bg-light">
             <h2>Jobs</h2>
           <Doughnut data={joblevel}/>
           <div className="percent">
@@ -192,8 +196,8 @@ const inProgress = []
               <p>{Math.round(compelete.length*100/jobs)}%</p>
             </div>
           </div>
-        </div>
-        <div style={{width:"25%"}} className="Sanai3y">
+        </div>:null}
+       {showsanai3y? <div style={{width:"25%"}} className="Sanai3y shadow rounded-3 bg-light">
             <h2>Sanai3y</h2>
           <Doughnut data={sanai3ylevel}/>
           <div className="percent">
@@ -211,8 +215,8 @@ const inProgress = []
               <p>{Math.round(freetrial.length*100/sanai3ies)}%</p>
             </div>
           </div>
-        </div>
-        <div style={{width:"25%"}} className="Clients">
+        </div>:null}
+       {showclient? <div style={{width:"25%"}} className="Clients shadow rounded-3 bg-light">
             <h2>Client</h2>
           <Doughnut data={sanai3ylevel}/>
           <div className="percent">
@@ -230,7 +234,7 @@ const inProgress = []
               <p>{Math.round(freetrial.length*100/sanai3ies)}%</p>
             </div>
           </div>
-        </div>
+        </div>:null}
       
         
           <Routes>

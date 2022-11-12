@@ -22,15 +22,27 @@ function LoginPAge()
                 
                 axios.post("http://localhost:7000/client/signin", values).then((res) => {
                     console.log(res.status)
+                    // console.log(res.data.data.rule)
                     if (res.status == 200) {
+                        if (res.data.data.rule=="admin") {
+                            console.log("object");
+                            localStorage.setItem("token",res.headers.authorization);
+                            navigate("/Dashboard")
+                            setLogErr(false)
+                        } else {
+                            console.log("erorr admin")
+                            setLogErr(true)
+                        }
+                            //   console.log("object");
+                            // localStorage.setItem("token",res.headers.authorization);
+                            // navigate("/Dashboard")
+                            // setLogErr(false)
                         // console.log(res.data.data.token)
-                        console.log("object");
-                        localStorage.setItem("token",res.headers.authorization);
+                   
                         // localStorage.setItem("snai3yRole", res.data.data.rule);
                         // localStorage.setItem("Name", res.data.data.firstName +" "+ res.data.data.lastName);
                         // localStorage.setItem("image", res.data.data.image);
-                        navigate("/Dashboard")
-                        setLogErr(false)
+                      
                     }
                     else {
                         console.log("eror")
@@ -48,7 +60,7 @@ function LoginPAge()
             validationSchema: loginSchema
 
         })
-        console.log(loginFormik.errors)
+        // console.log(loginFormik.errors)
     return(
         <Fragment>
         <div className='container parint_login '>
