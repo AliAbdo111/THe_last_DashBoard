@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './Card.css'
 import '../../Pages/Var.css'
+import Setting from '../TopRate/TopRate' 
+import DropDwoin from '../../component/Cardes/DropDwonList'
 import Topbar from './../topbar/Topbar';
 import TAbleSanai3y from "../Table/TAbleSanai3y";
 import TAbleClient  from '../Table/TAbleClient/TAbleClient';
@@ -32,7 +34,7 @@ const clients = dataClient.length
   
   const freetrial = []
 const pending = []
-const subscriber = []
+const subscriber = [] 
   for (const i of dataSanai3y) {
     if (i.level=='freetrail') {
       freetrial.push(i.level)
@@ -333,8 +335,10 @@ const inProgress = []
           <Routes>
     <Route path="/"  element={<MainScreen  />} />
     <Route path="/Sanai3y" element={ < TAbleSanai3y  /> }/>
-    <Route path="/Client" element={<TAbleClient />} />
+    <Route path="/Client" element={<TAbleClient />} /> 
     <Route path="/Job" element={<TableJob/>} />
+    <Route path="/Sitting" element={<Setting/>} />
+
     </Routes>
          
         </div>
