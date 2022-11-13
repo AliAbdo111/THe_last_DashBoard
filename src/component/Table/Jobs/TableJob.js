@@ -255,12 +255,17 @@ console.log(currentPge)
                               </div>
                               <div className="parentTitles">
                                 <div>
-                                  <div className="titleCard">
-                                    <FaUserAlt
-                                      style={{ color: "#ffb200", fontSize: 20 }}
-                                    />
-                                    <h5>{`[${[...item.proposals]}]`}</h5>
-                                  </div>
+                                {item.proposals.length !== 0 ? (
+                                    <div className="titleCard">
+                                      <FaUserAlt
+                                        style={{
+                                          color: "#ffb200",
+                                          fontSize: 20,
+                                        }}
+                                      />
+                                      <h5>{`[${[...item.proposals]}]`}</h5>
+                                    </div>
+                                  ) : null}
                                 </div>
                                 <div>
                                   <div className="titleCard">

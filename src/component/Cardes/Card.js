@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './Card.css'
 import '../../Pages/Var.css'
-import Setting from '../TopRate/TopRate' 
+import Setting from '../Setting/AddNewAdmin' 
 import DropDwoin from '../../component/Cardes/DropDwonList'
 import Topbar from './../topbar/Topbar';
 import TAbleSanai3y from "../Table/TAbleSanai3y";
@@ -290,7 +290,7 @@ const inProgress = []
 
             <div className="statistic1">
              <span className="d-flex ">
-               <p className="me-2"><FaCircle style={{color:"rgb(255, 205, 86)"}}/> اسوان</p>
+               <p className="me-2"><FaCircle style={{color:"rgb(255, 99, 132)"}}/> اسوان</p>
                <p className="me-2">{Math.round(aswan.length*100/clients)}%</p>
              </span>
              <span className="d-flex ">
@@ -337,7 +337,7 @@ const inProgress = []
     <Route path="/Sanai3y" element={ < TAbleSanai3y  /> }/>
     <Route path="/Client" element={<TAbleClient />} /> 
     <Route path="/Job" element={<TableJob/>} />
-    <Route path="/Sitting" element={<Setting/>} />
+    <Route path="/Setting" element={<Setting/>} />
 
     </Routes>
          

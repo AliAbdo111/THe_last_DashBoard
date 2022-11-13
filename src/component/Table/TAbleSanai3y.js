@@ -154,30 +154,29 @@ function TAbleSanai3y() {
                   aria-hidden="true"
                 >
                   <div className="modal-dialog">
-                    <div className="modal-content">
-                      <div className=" d-flex justify-content-between  p-3 align-items-center" dir="rtl">
-                        <h1
-                          className="modal-title fs-2"
-                          id="staticBackdropLabel"
-                        >
-                          التفاصيل حول الصنايعي
-                        </h1>
+                  <div className="modal-content">
+                    <div
+                      className=" d-flex justify-content-between  p-3 align-items-center"
+                      dir="rtl"
+                    >
+                      <h1 className="modal-title fs-2" id="staticBackdropLabel">
+                        التفاصيل حول الصنايعي
+                      </h1>
 
-                        <button
-                          type="button"
-                          className="btn-close edit_close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
+                      <button
+                        type="button"
+                        className="btn-close edit_close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
 
-                      <div className="modal-body">
-                        {/* data Snai3y In Details */}
-                        <div className="some_edit_about_snai3y">
-                          <div className="cards-body">
-                  
-                       <div className="leftTitle">
-                       <div className="titleimg">
+                    <div className="modal-body">
+                      {/* data Snai3y In Details */}
+                      <div className="some_edit_about_snai3y">
+                        <div className="cards-body">
+                          <div className="leftTitle">
+                            <div className="titleimg">
                               <img
                                 width={150}
                                 style={{ display: "block" }}
@@ -186,7 +185,7 @@ function TAbleSanai3y() {
                                 alt=""
                               />
                             </div>
-                         <div className="titleContent">
+                            <div className="titleContent">
                               <div className="parentTitles">
                                 <div className="titleCard">
                                   <FaUserAlt
@@ -220,74 +219,70 @@ function TAbleSanai3y() {
                                   <FaIdCardAlt
                                     style={{ color: "#ffb200", fontSize: 20 }}
                                   />
-                                  <h5 className="card-text">{item.nationalId}</h5>
+                                  <h5 className="card-text">
+                                    {item.nationalId}
+                                  </h5>
                                 </div>
-                          
+
+                              
+                              </div>
+                            </div>
+                          </div>
+                          <div className="rightTitle">
+                           
+                            <div className="parentTitles">
+                              <div>
+                                <div className="titleCard">
+                                  <FaTransgender
+                                    style={{ color: "#ffb200", fontSize: 22 }}
+                                  />
+                                  <h5>{item.gender}</h5>
+                                </div>
+                               
+                              </div>
+                              <div>
+                                <div className="titleCard">
+                                  <GoTools
+                                    style={{ color: "#ffb200", fontSize: 20 }}
+                                  />
+                                  <h5>{item.skills}</h5>
+                                </div>
                                 <div className="titleCard">
                                   <GoPencil
                                     style={{ color: "#ffb200", fontSize: 20 }}
                                   />
-                                  <h5>{item.age}</h5>
+                                  <h5>{`years ${item.age} `}</h5>
                                 </div>
+                                <div className="titleCard">
+                              <FaClock
+                                style={{ color: "#ffb200", fontSize: 22 }}
+                              />
+                              <h5>{`${format(
+                                new Date(item.joinedDate),
+                                "d/MMM/yyyy"
+                              )}`}</h5>
+                            </div>
                               </div>
-                         </div>
-                       </div>
-                          <div className="rightTitle">
-                              <div className="titleCard">
-                                <FaClock
-                                  style={{ color: "#ffb200", fontSize: 22 }}
-                                />
-                                <h5>{`${format(
-                                  new Date(item.joinedDate),
-                                  "d/MMM/yyyy"
-                                )}`}</h5>
-                              </div>
-                              <div className="parentTitles">
-                                <div>
-                                  <div className="titleCard">
-                                    <FaTransgender
-                                      style={{ color: "#ffb200", fontSize: 22 }}
-                                    />
-                                    <h5>{item.gender}</h5>
-                                  </div>
-                                  <div className="titleCard">
-                                    <FaUserAlt
-                                      style={{ color: "#ffb200", fontSize: 20 }}
-                                    />
-                                    <h5>{item.rule}</h5>
-                                  </div>
-                                </div>
-                                <div>
-                                  <div className="titleCard">
-                                    <GoTools
-                                      style={{ color: "#ffb200", fontSize: 20 }}
-                                    />
-                                    <h5>{item.skills}</h5>
-                                  </div>
-                                  <div className="titleCard">
-                                    <GoInfo
-                                      style={{ color: "#ffb200", fontSize: 20 }}
-                                    />
-                                    <h5 className="card-title">{item.title}</h5>
-                                  </div>
-                                </div>
-                              </div>
-                          </div>
+                            </div>
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <div className="modal-footer edit_footer_job  p-2" dir="rtl">
-                        <button
-                          type="button"
-                          className="btn btn-secondary edit_close_button"
-                          data-bs-dismiss="modal"
-                        >
-                          اغلاق
-                        </button>
-                      </div>
+                    <div
+                      className="modal-footer edit_footer_job  p-2"
+                      dir="rtl"
+                    >
+                      <button
+                        type="button"
+                        className="btn btn-secondary edit_close_button"
+                        data-bs-dismiss="modal"
+                      >
+                        اغلاق
+                      </button>
                     </div>
                   </div>
+                </div>
                 </div>
               </tr>
             ))}

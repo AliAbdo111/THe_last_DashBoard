@@ -6,6 +6,9 @@ import LoginPAge from "./Pages/login";
 // import { IconName } from "react-icons/fa";
 import Sidbar from "./component/sidbar/Sidbar";
 import Garud from "./Pages/Garud"
+import Setting from "./component/Setting/Setting";
+import DropDwoin from "./component/Cardes/DropDwonList";
+import AddNewAdmin from "./component/Setting/AddNewAdmin";
 function App() {
   let token = localStorage.getItem("token");
   return (
@@ -13,9 +16,11 @@ function App() {
   
     <Routes>
     <Route path="/" element={<LoginPAge />} />
-    <Route path="/Dashboard" element={<Dashboard />}></Route>
+    <Route path="/Dashboard" element={<Dashboard />}/>
+   
     <Route path="*" element={< Dashboard/>} />
   </Routes>
+  {/* <AddNewAdmin/> */}
   </>
   );
 }
