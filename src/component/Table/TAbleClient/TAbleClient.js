@@ -8,6 +8,7 @@ import {
   FaClock,
   FaGenderless,
   FaIdCardAlt,
+  FaSearch,
   FaPhoneSquareAlt,
   FaTransgender,
   FaUserAlt,
@@ -77,7 +78,8 @@ function TAbleClient() {
     <div className="resentOrder">
       <div className="cardHeadr">
         <h2>Client Register</h2>
-        <input
+        <div>
+          <input
           type="text"
           placeholder="Search About client"
           className="search"
@@ -85,6 +87,12 @@ function TAbleClient() {
             const inputSearch=ev.target.value.toLocaleLowerCase().trim()
             setSearch(inputSearch)}}
         />
+        <span className='searchicon'>
+
+<FaSearch/>
+          </span>
+        </div>
+    
       </div>
 
       <table>

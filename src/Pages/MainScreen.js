@@ -6,7 +6,7 @@ import Setting from '../component/Setting/Setting';
 import Notifection from "../component/Notfication/Notifection";
 
 import './progress.css'
-import Charts from "./Charts";
+// import Charts from "./Charts";
 function MainScreen() {
 
   return (
@@ -14,7 +14,7 @@ function MainScreen() {
 
     <div className="w-100">
         <Setting/>
-        <Charts />
+        {/* <Charts /> */}
         {/* <Charts /> */}
         {/* <Charts /> */}
        

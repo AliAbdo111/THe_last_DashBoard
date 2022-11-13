@@ -18,18 +18,21 @@ function Setting() {
       // setPage(_(response.data.Data).slice(0).take(pageSize).value());
     });   
   }, []);
+  console.log(dataclient);
+  console.log(datasanai3y);
 
   return (
 
     <div className="row">
       <div className="mb-4 col-md-6 col-12">
     <div className="shadow rounded-3">
-      <div className="border-bottom border-2 card-header bg-light ">
+      <div className="border-bottom border-2 d-flex justify-content-between card-header bg-light ">
         <h2 className="fs-5 fw-bold mb-0 p-3">New Sanai3y </h2>
+        <h2 className="fs-5 fw-bold mb-0 p-3">Jobs </h2>
       </div>
       <div className="py-0 px-0 bg-light card-body ">
         <div className="list-group-flush list-group">
-     {  datasanai3y.slice(1).slice(-5).reverse().map((item,index) => (
+     {  datasanai3y.sort((a, b) => b.jobs.length - a.jobs.length).slice(0, 5).map((item,index) => (
        <div className="bg-light border-bottom py-3 px-3 list-group-item show-data"
        key={index}
        >
@@ -53,7 +56,7 @@ function Setting() {
            <small>{item.skills}</small>
          </div>
          <div className="text-end col">
-           <span className="fs-6 fw-bolder text-dark">$1834</span>
+           <span className="fs-6 fw-bolder text-dark me-4">{item.jobs.length}</span>
          </div>
        </div>
      </div>
@@ -65,12 +68,13 @@ function Setting() {
   </div>
     <div className="mb-4 col-md-6 col-12">
     <div className="shadow cards rounded-3">
-      <div className="border-bottom border-2 card-header bg-light">
-        <h2 className="fs-5 fw-bold mb-0 p-3">New Client </h2>
+      <div className="border-bottom border-2 d-flex justify-content-between card-header bg-light">
+        <h2 className="fs-5 fw-bold mb-0 p-3">Top rate Client </h2>
+        <h2 className="fs-5 fw-bold mb-0 p-3">Jobs </h2>
       </div>
       <div className="py-0 px-0 bg-light card-body">
         <div className="list-group-flush list-group">
-          {dataclient.slice(1).slice(-5).reverse().map((item,index)=>(
+          {dataclient.sort((a, b) => b.jobs.length - a.jobs.length).slice(0, 5).map((item,index)=>(
 
           <div className="bg-light border-bottom py-3 px-3 list-group-item show-data"
           key={index}
@@ -95,7 +99,7 @@ function Setting() {
                 <small>{item.rule}</small>
               </div>
               <div className="text-end col">
-                <span className="fs-6 fw-bolder text-dark">$1834</span>
+                <span className="fs-6 fw-bolder me-4 text-dark">{item.jobs.length}</span>
               </div>
             </div>
           </div>

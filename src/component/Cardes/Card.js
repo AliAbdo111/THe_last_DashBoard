@@ -29,6 +29,7 @@ const clients = dataClient.length
 
   // start chart
   // 1-Sanai3y
+  
   const freetrial = []
 const pending = []
 const subscriber = []
@@ -63,6 +64,98 @@ const inProgress = []
     }
     // console.log("object");
   }
+  // 3-Client
+  const aswan = []
+  const aswanNew = []
+  const abusimbel = []
+  const drao = []
+  const komombo = []
+  const nasrNuba = []
+  const klabsha = []
+  const edfou = []
+  for (const i of dataClient) {
+    if (i.address=='أسوان') {
+      aswan.push(i.address)
+      
+    }if (i.address=="أسوان الجديدة") {
+      aswanNew.push(i.address)
+      
+    } if(i.address=="أبو سمبل") {
+      abusimbel.push(i.address)
+      
+    } if(i.address=="دراو") {
+      drao.push(i.address)
+      
+    } if(i.address=="كوم امبو") {
+      komombo.push(i.address)
+      
+    } if(i.address=="نصر النوبة") {
+      nasrNuba.push(i.address)
+      
+    } if(i.address=="كلابشة") {
+      klabsha.push(i.address)
+      
+    } if(i.address=="أدفو") {
+      edfou.push(i.address)
+      
+    }
+      
+    // console.log("object");
+  }
+  useEffect(()=>{
+    setClientlevel(
+      {
+        labels:["أسوان","أسوان الجديدة","أبو سمبل","دراو","كوم امبو","نصر النوبة",
+        "كلابشة","أدفو"],
+        datasets: [{
+          // label: 'My First Dataset',
+          data: [aswan.length,aswanNew.length,abusimbel.length,
+            drao.length,komombo.length,nasrNuba.length,klabsha.length,edfou.length],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            '#E605FF',
+            '#FF6905',
+            '#1EFF05',
+            '#051EFF',
+            '#60A857'
+          ],
+          hoverOffset: 1
+        }]
+      }
+    )
+    setJoblevel(
+      {
+        labels:["complete","pending","in progress"],
+        datasets: [{
+          // label: 'My First Dataset',
+          data: [compelete.length,pendingJob.length,inProgress.length],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+          ],
+          hoverOffset: 1
+        }]
+      }
+    )
+    setSanai3ylevel(
+      {
+        labels:["freetrial","pending","subscriber"],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [freetrial.length,pending.length,subscriber.length],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+          ],
+          hoverOffset: 1
+        }]
+      }
+    )
+  },[dataClient,dataJob,dataSanai3y])
   // console.log(subscriber.length);
   const datas =  {
     labels: [
@@ -90,21 +183,7 @@ const inProgress = []
     axios.get(`${dataUrl}/Jobs/all`).then((response) => {
       // console.log(response.data.data);
       setDataJob(response.data.data);
-      setJoblevel(
-        {
-          labels:["complete","pending","in progress"],
-          datasets: [{
-            // label: 'My First Dataset',
-            data: [compelete.length,pendingJob.length,inProgress.length],
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
-              'rgb(255, 205, 86)'
-            ],
-            hoverOffset: 1
-          }]
-        }
-      )
+     
     });
     axios.get(`${dataUrl}/client/all`).then((response) => {
       // console.log(response.data.Data);
@@ -118,27 +197,13 @@ const inProgress = []
       // console.log(freetrial);
       // console.log(pending);
       // console.log(subscriber);
-      setSanai3ylevel(
-        {
-          labels:["freetrial","pending","subscriber"],
-          datasets: [{
-            label: 'My First Dataset',
-            data: [freetrial.length,pending.length,subscriber.length],
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
-              'rgb(255, 205, 86)'
-            ],
-            hoverOffset: 1
-          }]
-        }
-      )
+    
     });
   }, []);
   const[showsanai3y,setShowsanai3y]=useState(false)
   const[showjob,setShowjob]=useState(false)
   const[showclient,setShowclient]=useState(false)
-  // console.log(showjob);
+  // console.log(clients);
       return (
         <>
      
@@ -155,7 +220,7 @@ const inProgress = []
             </div>
           </div>
           <div className="card1 show2" onClick={()=>{showsanai3y?setShowsanai3y(false):setShowsanai3y(true)}} style={{background: "linear-gradient(-90deg,#90caf9,#047edf 99%)"}}>
-            <div>
+            <div> 
               <div className="iconBox">
               <FaUserAlt/>
               </div>
@@ -178,10 +243,10 @@ const inProgress = []
           </div>
          
         
-       {showjob? <div style={{width:"25%"}}  className="Jobs shadow rounded-3 bg-light">
+       {showjob? <div style={{width:"30%"}}  className="Jobs shadow rounded-3 bg-light">
             <h2>Jobs</h2>
           <Doughnut data={joblevel}/>
-          <div className="percent">
+          <div className="percent mt-5">
 
             <div className="statistic1">
               <p><FaCircle style={{color:"rgb(255, 205, 86)"}}/> in progress</p>
@@ -197,10 +262,10 @@ const inProgress = []
             </div>
           </div>
         </div>:null}
-       {showsanai3y? <div style={{width:"25%"}} className="Sanai3y shadow rounded-3 bg-light">
+       {showsanai3y? <div style={{width:"30%"}} className="Sanai3y shadow rounded-3 bg-light">
             <h2>Sanai3y</h2>
           <Doughnut data={sanai3ylevel}/>
-          <div className="percent">
+          <div className="percent mt-5">
 
             <div className="statistic1 subscriber">
               <p><FaCircle style={{color:"rgb(255, 205, 86)"}}/> subscriber</p>
@@ -216,22 +281,50 @@ const inProgress = []
             </div>
           </div>
         </div>:null}
-       {showclient? <div style={{width:"25%"}} className="Clients shadow rounded-3 bg-light">
+       {showclient? <div style={{width:"30%"}} className="Clients shadow rounded-3 bg-light">
             <h2>Client</h2>
-          <Doughnut data={sanai3ylevel}/>
+          <Doughnut data={clientlevel}/>
           <div className="percent">
 
             <div className="statistic1">
-              <p><FaCircle style={{color:"rgb(255, 205, 86)"}}/> subscriber</p>
-              <p>{Math.round(subscriber.length*100/sanai3ies)}%</p>
+             <span className="d-flex ">
+               <p className="me-2"><FaCircle style={{color:"rgb(255, 205, 86)"}}/> اسوان</p>
+               <p className="me-2">{Math.round(aswan.length*100/clients)}%</p>
+             </span>
+             <span className="d-flex ">
+               <p className="me-2"><FaCircle style={{color:"rgb(54, 162, 235)"}}/> اسوان الجديدة</p>
+               <p className="me-2">{Math.round(aswanNew.length*100/clients)}%</p>
+             </span>
             </div>
             <div className="statistic2">
-              <p><FaCircle style={{color:"rgb(54, 162, 235)"}}/> pending</p>
-              <p>{Math.round(pending.length*100/sanai3ies)}%</p>
+             <span className="d-flex ">
+               <p className="me-2"><FaCircle style={{color:"rgb(255, 205, 86)"}}/> ابو سمبل</p>
+               <p className="me-2">{Math.round(abusimbel.length*100/clients)}%</p>
+             </span>
+             <span className="d-flex ">
+               <p className="me-2"><FaCircle style={{color:"#E605FF"}}/> دراو</p>
+               <p className="me-2">{Math.round(drao.length*100/clients)}%</p>
+             </span>
             </div>
             <div className="statistic3">
-              <p><FaCircle style={{color:"rgb(255, 99, 132)"}}/> freetrail</p>
-              <p>{Math.round(freetrial.length*100/sanai3ies)}%</p>
+            <span className="d-flex ">
+                <p className="me-2"><FaCircle style={{color:"#FF6905"}}/> كوم امبو</p>
+                <p className="me-2">{Math.round(komombo.length*100/clients)}%</p>
+            </span>
+            <span className="d-flex ">
+               <p className="me-2"><FaCircle style={{color:"#1EFF05"}}/> نصر النوبة</p>
+               <p className="me-2">{Math.round(nasrNuba.length*100/clients)}%</p>
+             </span>
+            </div>
+            <div className="statistic3">
+            <span className="d-flex ">
+                <p className="me-2"><FaCircle style={{color:"#051EFF"}}/> كلابشة</p>
+                <p className="me-2">{Math.round(klabsha.length*100/clients)}%</p>
+            </span>
+            <span className="d-flex ">
+               <p className="me-2"><FaCircle style={{color:"#60A857"}}/> ادفو</p>
+               <p className="me-2">{Math.round(edfou.length*100/clients)}%</p>
+             </span>
             </div>
           </div>
         </div>:null}

@@ -7,6 +7,7 @@ import {
   FaGenderless,
   FaIdCardAlt,
   FaPhoneSquareAlt,
+  FaSearch,
   FaTransgender,
   FaUserAlt,
 } from "react-icons/fa";
@@ -80,14 +81,20 @@ function TAbleSanai3y() {
     <div className="resentOrder">
       <div className="cardHeadr">
         <h2>Sanai3y Register</h2>
+        <div>
         <input
           type="text"
-          placeholder="Search About client"
+          placeholder="Search About Sanai3y"
           className="search"
           onChange={(ev) =>{
             const inputSearch=ev.target.value.toLocaleLowerCase().trim()
             setSearch(inputSearch)}}
-        />
+            />
+          <span className='searchicon'>
+
+<FaSearch/>
+          </span>
+            </div>
       </div>
 
       <table>
