@@ -126,6 +126,7 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
    }
    .status .inprogress{
     padding: 2px 4px;
+    /* margin: 0 20px; */
     background:blue;
     border-radius: 5px;
     color:white ;
@@ -155,6 +156,9 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
     /* display: flex;  */
     flex-direction: row-reverse;
   justify-content: space-around;
+   }
+   .card-title{
+    width: 150px;
    }
    .cards-body  .titleCard{
     display: flex; 

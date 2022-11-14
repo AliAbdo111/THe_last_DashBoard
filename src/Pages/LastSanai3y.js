@@ -38,10 +38,13 @@ function LastSanai3y() {
   /////////////////////pagination/////////////////
   return (
     <div className="resentOrder">
-      <div className="cardHeadr">
-        <h2>THe Last Client Register : </h2>
-        <NavLink to="Sanai3y">
-          <h3>View All Sanai3y : </h3>
+      <div
+        className="cardHeadr"
+        style={{ display: "flex", alignItems: "center", marginBottom: 8 }}
+      >
+        <h2>THe Last Sanai3y Register : </h2>
+        <NavLink style={{ textDecoration: "none" }} to="/Sanai3y">
+        <button style={{backgroundColor:"#007bff",border:'none',color:'#fff',padding:5,borderRadius:5}}>View All : </button>
         </NavLink>
       </div>
 
@@ -152,13 +155,10 @@ function LastSanai3y() {
                                     {item.nationalId}
                                   </h5>
                                 </div>
-
-                              
                               </div>
                             </div>
                           </div>
                           <div className="rightTitle">
-                           
                             <div className="parentTitles">
                               <div>
                                 <div className="titleCard">
@@ -167,7 +167,6 @@ function LastSanai3y() {
                                   />
                                   <h5>{item.gender}</h5>
                                 </div>
-                               
                               </div>
                               <div>
                                 <div className="titleCard">
@@ -183,14 +182,20 @@ function LastSanai3y() {
                                   <h5>{`years ${item.age} `}</h5>
                                 </div>
                                 <div className="titleCard">
-                              <FaClock
-                                style={{ color: "#ffb200", fontSize: 22 }}
-                              />
-                              <h5>{`${format(
-                                new Date(item.joinedDate),
-                                "d/MMM/yyyy"
-                              )}`}</h5>
-                            </div>
+                                  <FaClock
+                                    style={{ color: "#ffb200", fontSize: 22 }}
+                                  />
+                                  <h5>{`${format(
+                                    new Date(item.joinedDate),
+                                    "d/MMM/yyyy"
+                                  )}`}</h5>
+                                </div>
+                                <div className="titleCard">
+                                  <GoTools
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5>{`Job ${item.jobs.length}`}</h5>
+                                  </div>
                               </div>
                             </div>
                           </div>

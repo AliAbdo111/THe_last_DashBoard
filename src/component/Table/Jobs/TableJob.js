@@ -43,7 +43,7 @@ function TableJob() {
     });
   }, []);
 
-console.log(currentPge)
+console.log(data)
   ////////////////////Sorting////////////////////
   const sorting = (col) => {
     setOrder("ASC")
@@ -263,7 +263,11 @@ console.log(currentPge)
                                           fontSize: 20,
                                         }}
                                       />
-                                      <h5>{`[${[...item.proposals]}]`}</h5>
+                                      <h5>{item.proposals.map((item)=>(
+                                        <p>
+                                          {`${item.sanai3yId.firstName} ${item.sanai3yId.lastName},`}
+                                        </p>
+                                      ))}</h5>
                                     </div>
                                   ) : null}
                                 </div>

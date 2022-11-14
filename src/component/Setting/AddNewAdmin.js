@@ -9,6 +9,7 @@ import * as yup from 'yup'
 import './AddNewAdmin.css'
 
 function Register() {
+  // console.log(window.location.pathname.split('/')[1]);
   let navigate = useNavigate()
 
   let [flag, setFlag] = useState(false);
@@ -181,7 +182,7 @@ function Register() {
             <form method="post" onSubmit={userFormik.handleSubmit} onReset={userFormik.handleReset}>
               <div className="form_user" id="form_user">
                 <div className="phead">
-                  <h2 className="head_form">إنشاء ادمن</h2>
+                  <h2 className="head_form">Add new admin </h2>
                 </div>
                 {/* firstName lastName */}
                 <div className='row'>

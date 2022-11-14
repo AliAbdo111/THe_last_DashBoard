@@ -21,7 +21,7 @@ const baseURL = "http://localhost:7000/client/all";
 
 function LastClient() {
   const [data, setData] = useState([]);
- 
+
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setData(response.data.Data);
@@ -31,10 +31,23 @@ function LastClient() {
   /////////////////////pagination/////////////////
   return (
     <div className="resentOrder">
-      <div className="cardHeadr">
-        <h2>THe Last Sanai3y Register : </h2>
-        <NavLink to="Sanai3y">
-          <h3>View All Sanai3y : </h3>
+      <div
+        className="cardHeadr"
+        style={{ display: "flex", alignItems: "center", marginBottom: 8 }}
+      >
+        <h2>THe Last Client Register : </h2>
+        <NavLink style={{ textDecoration: "none" }} to="/client">
+          <button
+            style={{
+              backgroundColor: "#007bff",
+              border: "none",
+              color: "#fff",
+              padding: 5,
+              borderRadius: 5,
+            }}
+          >
+            View All :{" "}
+          </button>
         </NavLink>
       </div>
 
@@ -75,14 +88,14 @@ function LastClient() {
                 aria-labelledby="staticBackdropLabel"
                 aria-hidden="true"
               >
-                 <div className="modal-dialog">
+                <div className="modal-dialog">
                   <div className="modal-content">
                     <div
                       className=" d-flex justify-content-between  p-3 align-items-center"
                       dir="rtl"
                     >
                       <h1 className="modal-title fs-2" id="staticBackdropLabel">
-                        التفاصيل حول الصنايعي
+                        التفاصيل حول العميل
                       </h1>
 
                       <button
@@ -145,8 +158,6 @@ function LastClient() {
                                     {item.nationalId}
                                   </h5>
                                 </div>
-
-                              
                               </div>
                             </div>
                           </div>
@@ -168,20 +179,19 @@ function LastClient() {
                                   />
                                   <h5>{item.gender}</h5>
                                 </div>
-                              
                               </div>
                               <div>
-                                <div className="titleCard">
-                                  <GoTools
-                                    style={{ color: "#ffb200", fontSize: 20 }}
-                                  />
-                                  <h5>{item.skills}</h5>
-                                </div>
                                 <div className="titleCard">
                                   <GoPencil
                                     style={{ color: "#ffb200", fontSize: 20 }}
                                   />
                                   <h5>{`years ${item.age} `}</h5>
+                                </div>
+                                <div className="titleCard">
+                                  <GoInfo
+                                    style={{ color: "#ffb200", fontSize: 20 }}
+                                  />
+                                  <h5>{`${item.rule} `}</h5>
                                 </div>
                               </div>
                             </div>

@@ -192,6 +192,12 @@ function Setting() {
                                 "d/MMM/yyyy"
                               )}`}</h5>
                             </div>
+                            <div className="titleCard">
+                                  <GoInfo
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5>{`Job ${item.jobs.length}`}</h5>
+                                  </div>
                               </div>
                             </div>
                           </div>
@@ -277,7 +283,7 @@ function Setting() {
                       dir="rtl"
                     >
                       <h1 className="modal-title fs-2" id="staticBackdropLabel">
-                        التفاصيل حول الصنايعي
+                        التفاصيل حول العميل
                       </h1>
 
                       <button
@@ -366,18 +372,19 @@ function Setting() {
                               
                               </div>
                               <div>
-                                <div className="titleCard">
-                                  <GoTools
-                                    style={{ color: "#ffb200", fontSize: 20 }}
-                                  />
-                                  <h5>{item.skills}</h5>
-                                </div>
+                             
                                 <div className="titleCard">
                                   <GoPencil
                                     style={{ color: "#ffb200", fontSize: 20 }}
                                   />
                                   <h5>{`years ${item.age} `}</h5>
                                 </div>
+                                <div className="titleCard">
+                                  <GoInfo
+                                      style={{ color: "#ffb200", fontSize: 20 }}
+                                    />
+                                    <h5>{`Job ${item.jobs.length}`}</h5>
+                                  </div>
                               </div>
                             </div>
                           </div>

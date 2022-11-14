@@ -44,11 +44,10 @@ function LastJob() {
 
   return (
     <div className="resentOrder">
-      <div className="cardHeadr">
+      <div className="cardHeadr" style={{display:"flex",alignItems:"center",marginBottom:8}}>
         <h2>Jobs Register</h2>
-        <NavLink to="Job">
-          {" "}
-          <h3>View AllJObs</h3>
+        <NavLink  style={{textDecoration:"none"}} to="/job">
+        <button style={{backgroundColor:"#007bff",border:'none',color:'#fff',padding:5,borderRadius:5}}>View All : </button>
         </NavLink>
       </div>
       {!data ? (

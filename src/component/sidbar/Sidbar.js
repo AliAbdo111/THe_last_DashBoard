@@ -66,7 +66,7 @@ function Sidbar() {
         </li>
       
         <li>
-          <NavLink to="Setting">
+          <NavLink to="/Setting">
 
             <span className="icon">
 
