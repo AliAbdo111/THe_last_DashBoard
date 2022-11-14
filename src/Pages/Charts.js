@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "reactochart/styles.css";
+// import "reactochart/styles.css";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -71,7 +71,7 @@ const Charts = (props) => {
   };
   return (
     <>
-    <Line options={options} data={data2} />;
+    <Line options={options} data={data2} />
     </>
   );
 };

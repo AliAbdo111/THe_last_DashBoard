@@ -8,16 +8,16 @@ import Setting from '../component/TopRate/TopRate';
 import Notifection from "../component/Notfication/Notifection";
 
 import './progress.css'
-// import Charts from "./Charts";
+import Charts from "./Charts";
 function MainScreen() {
 
   return (
     <>
 
     <div className="w-100">
+        <Charts />
         <Setting/>
    
-        {/* <Charts /> */}
         {/* <Charts /> */}
         {/* <Charts /> */}
        
