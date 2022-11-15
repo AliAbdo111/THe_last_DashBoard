@@ -218,7 +218,7 @@ const inProgress = []
               </div>
             <section>
                 <h2 className="unmber"><CountUp end={dataJob.length} useEasing="true" duration={2}  /></h2>
-                <h2 className="namecard">Jops</h2>
+                <h2 className="namecard">Jobs</h2>
             </section>
             </div>
           </div>
@@ -338,7 +338,7 @@ const inProgress = []
     <Route path="/Sanai3y" element={ < TAbleSanai3y  /> }/>
     <Route path="/Client" element={<TAbleClient />} /> 
     <Route path="/Job" element={<TableJob/>} />
-    <Route path="/Setting" element={<Setting/>} />
+    
 
     </Routes>
          

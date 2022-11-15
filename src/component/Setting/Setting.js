@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Sidbar from '../sidbar/Sidbar'
 import AddNewAdmin from './AddNewAdmin'
 import './Setting.css'
 function Setting() {
   
   return (
-    <AddNewAdmin/>
+    
+    <Fragment>   
+   
+    <div className="appMain">
+       <div className="appMAinNext">
+       <Sidbar />
+      <div style={{flexDirection:'column',overflow:'auto '}}>
+      <AddNewAdmin/>
+      
+      </div>
+       
+     </div>
+     </div>
+   
+     
+   </Fragment>
   )
 }
 

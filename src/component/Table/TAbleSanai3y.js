@@ -17,7 +17,7 @@ import _ from "lodash";
 import { FaTrashAlt } from "react-icons/fa";
 
 /////constanet/////
-const pageSize = 5;
+const pageSize = 10;
 const baseURL = "http://localhost:7000/sanai3y/all";
 ////commponent//////
 
@@ -102,7 +102,7 @@ function TAbleSanai3y() {
           <tr>
             <td onClick={() => sorting("firstName")}>Name</td>
             <td onClick={() => sorting("email")}>Email</td>
-            <td onClick={() => sorting("address")}>Adress</td>
+            <td onClick={() => sorting("address")}>Address</td>
             <td onClick={() => sorting("gender")}>gender</td>
             <td onClick={() => sorting("nationalId")}>National ID</td>
             <td>Delete</td>

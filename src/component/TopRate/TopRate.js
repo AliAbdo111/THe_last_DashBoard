@@ -12,7 +12,7 @@ import {
 import { GoInfo, GoLocation, GoMail, GoPencil, GoTools } from "react-icons/go";
 import { format } from "date-fns";
 import './TopRate.css'
-function Setting() {
+function TopRate() {
   const baseURLsanai3y = "http://localhost:7000/sanai3y/all";
   const [datasanai3y, setDatasanai3y] = useState([]);
   const [dataclient, setDataclient] = useState([]);
@@ -418,4 +418,4 @@ function Setting() {
   );
 }
 
-export default Setting;
+export default TopRate;

@@ -30,7 +30,7 @@ function LastJob() {
     axios.get(baseURL).then((response) => {
       const res = response.data.data;
 
-      setData(res);
+      setData(res.reverse());
     });
   }, []);
 
@@ -65,7 +65,7 @@ function LastJob() {
             </tr>
           </thead>
           <tbody>
-            {data.slice(-5).map((item) => (
+            {data.slice(0,5).map((item) => (
               <tr key={item.id}>
                 <td>{`${item.clientData?.firstName} ${item.clientData?.lastName}`}</td>
                 <td>{item.title}</td>

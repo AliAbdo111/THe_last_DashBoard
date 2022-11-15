@@ -24,7 +24,7 @@ function LastClient() {
 
   useEffect(() => {
     axios.get(baseURL).then((response) => {
-      setData(response.data.Data);
+      setData(response.data.Data.reverse());
     });
   }, []);
 
@@ -63,7 +63,7 @@ function LastClient() {
           </tr>
         </thead>
         <tbody>
-          {data.slice(-5).map((item, index) => (
+          {data.slice(0,5).map((item, index) => (
             <tr key={index}>
               <td>{`${item.firstName} ${item.lastName}`}</td>
               <td>{item.email}</td>

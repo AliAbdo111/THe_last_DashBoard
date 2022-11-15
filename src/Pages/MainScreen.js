@@ -4,7 +4,7 @@ import AddNewAdmin from  '../component/Setting/AddNewAdmin'
 import LastJob from "../Pages/LastJob";
 import LastSanai3y from "../Pages/LastSanai3y";
 import LastClient from "../Pages/LastClient";
-import Setting from '../component/TopRate/TopRate';
+import TopRate from '../component/TopRate/TopRate';
 import Notifection from "../component/Notfication/Notifection";
 
 import './progress.css'
@@ -16,23 +16,21 @@ function MainScreen() {
 
     <div className="w-100">
         <Charts />
-        <Setting/>
+        <TopRate/>
    
         {/* <Charts /> */}
         {/* <Charts /> */}
        
       </div>
       {/* tables and notifecation */}
-    <div style={{ "overflow-x": "auto" }} className="d-flex col-comp">
-      <div className="me-3">
+    <div style={{ "overflow-x": "auto","width":"100%" }}>
+      <div >
         <LastClient />
         <LastSanai3y />
         <LastJob />
      {/* <AddNewAdmin/> */}
       </div>
-      <div className="notification">
-        <Notifection/>
-      </div>
+    
 
     </div>
     

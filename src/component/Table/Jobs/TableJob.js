@@ -200,7 +200,7 @@ console.log(data)
                                 width={150}
                                 style={{ display: "block" }}
                                 className="img-thumbnail"
-                                src={item.images}
+                                src={item.image}
                                 alt=""
                               />
                             </div>

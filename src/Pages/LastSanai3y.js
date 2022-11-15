@@ -30,7 +30,7 @@ function LastSanai3y() {
   let navigate = useNavigate();
   useEffect(() => {
     axios.get(baseURL).then((response) => {
-      setData(response.data.Data);
+      setData(response.data.Data.reverse());
       setPage(_(response.data.Data).slice(0).take(pageSize).value());
     });
   }, []);
@@ -60,7 +60,7 @@ function LastSanai3y() {
           </tr>
         </thead>
         <tbody>
-          {data.slice(-5).map((item, index) => (
+          {data.slice(0,5).map((item, index) => (
             <tr key={index}>
               <td>{`${item.firstName} ${item.lastName}`}</td>
               <td>{item.email}</td>

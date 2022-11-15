@@ -2,12 +2,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./Sidbar.css";
 
 import { FaFirstOrderAlt} from "react-icons/fa";
-
+import { BsGearFill } from "react-icons/bs";
 import {
   FaHome,
   FaSignOutAlt,
   FaChartPie,
   FaUserAlt,
+  FaEye,
   FaCommentAlt,
 } from "react-icons/fa";
 function Sidbar() {
@@ -29,19 +30,19 @@ function Sidbar() {
         </li>
 
         <li>
-          <NavLink>
+          <a href="http://localhost:3001/home">
             <span className="icon">
               <FaHome />
             </span>
             <span className="titel ">Home</span>
-          </NavLink>
+          </a>
         </li>
         <li>
           <NavLink to="/Dashboard">
             <span className="icon">
               <FaChartPie />
             </span>
-            <span className="titel ">Dash Board</span>
+            <span className="titel ">Dashboard</span>
           </NavLink>
         </li>
         <li>
@@ -63,9 +64,9 @@ function Sidbar() {
         <li>
           <NavLink to="/Job">
             <span className="icon">
-              <FaUserAlt />
+              <FaEye />
             </span>
-            <span className="titel">Jops</span>
+            <span className="titel">Jobs</span>
           </NavLink>
         </li>
       
@@ -74,7 +75,7 @@ function Sidbar() {
 
             <span className="icon">
 
-              <FaUserAlt />
+              <BsGearFill />
     
             </span>
             <span className="titel">Setting</span>

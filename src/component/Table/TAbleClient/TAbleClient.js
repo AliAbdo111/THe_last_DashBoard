@@ -16,7 +16,7 @@ import {
 import { GoInfo, GoLocation, GoMail, GoPencil, GoTools } from "react-icons/go";
 import { format } from "date-fns";
 /////constanet/////
-const pageSize = 5;
+const pageSize = 10;
 const baseURL = "http://localhost:7000/client/all";
 ////commponent//////
 
@@ -100,7 +100,7 @@ function TAbleClient() {
           <tr>
             <td onClick={() => sorting("firstName")}>Name</td>
             <td onClick={() => sorting("email")}>Email</td>
-            <td onClick={() => sorting("address")}>Adress</td>
+            <td onClick={() => sorting("address")}>Address</td>
             <td onClick={() => sorting("gender")}>gender</td>
             <td onClick={() => sorting("gender")}>National ID</td>
             <td>Delete</td>
@@ -157,7 +157,7 @@ function TAbleClient() {
                       dir="rtl"
                     >
                       <h1 className="modal-title fs-2" id="staticBackdropLabel">
-                        التفاصيل حول الصنايعي
+                        التفاصيل حول العميل
                       </h1>
 
                       <button

@@ -71,7 +71,7 @@ function LoginPAge()
     </div>
 </div>
 
-<div className='row '> {/*Parent Row*/}
+<div className='row ' dir="rtl"> {/*Parent Row*/}
 
     <div className='col-lg-6 col-md-7 col-sm-12 col-12'>
         <div className='row rightSide_login'> {/*Child Row in right side*/}

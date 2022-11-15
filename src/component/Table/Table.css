@@ -147,7 +147,7 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
    .cards-body .leftTitle{
     display: flex;
     flex-direction: row;
-  margin:0 50px;
+  margin:0 25px;
    }
    .cards-body .rightTitle{
     
@@ -209,6 +209,9 @@ border-bottom: 1px solid rgba(0,0,0,0.1);
 {
     
   overflow-x: auto;
+}
+.titleimg{
+    left: 0;
 }
     
    }

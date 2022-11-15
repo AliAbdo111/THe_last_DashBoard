@@ -55,18 +55,19 @@ const Charts = (props) => {
     Data.map((item)=>{
       date4.push(item.date)})
     console.log(date4);
-    const labels = date4
+    const labels = date4.reverse()
   const data2={
     labels,
     datasets: [
       {
         fill: true,
         label: 'Job Count',
-        data: Data.map((item)=>item.totalJobs),
-        borderColor: '#F7EC09',
+        data: Data.map((item)=>item.totalJobs).reverse(),
+        borderColor: "rgba(75,192,192,1)",
 
-        backgroundColor: '#031737',
+        backgroundColor: "rgba(75,192,192,.2)",
       },
+          
     ],
   };
   return (
