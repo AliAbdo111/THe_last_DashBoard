@@ -34,16 +34,13 @@ const clients = dataClient.length
   // 1-Sanai3y
   
   const freetrial = []
-const pending = []
+
 const subscriber = [] 
   for (const i of dataSanai3y) {
-    if (i.level=='freetrail') {
+    if (i.subcribe==false) {
       freetrial.push(i.level)
       
-    }if (i.level=='pending') {
-      pending.push(i.level)
-      
-    } if(i.level=='subscriber') {
+    } if(i.subcribe==true) {
       subscriber.push(i.level)
       
     }
@@ -145,13 +142,13 @@ const inProgress = []
     )
     setSanai3ylevel(
       {
-        labels:["freetrial","pending","subscriber"],
+        labels:["freetrial","subscriber"],
         datasets: [{
           label: 'My First Dataset',
-          data: [freetrial.length,pending.length,subscriber.length],
+          data: [freetrial.length,subscriber.length],
           backgroundColor: [
             'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
+            
             'rgb(255, 205, 86)'
           ],
           hoverOffset: 1
@@ -274,10 +271,7 @@ const inProgress = []
               <p><FaCircle style={{color:"rgb(255, 205, 86)"}}/> subscriber</p>
               <p>{Math.round(subscriber.length*100/sanai3ies)}%</p>
             </div>
-            <div className="statistic2 pending">
-              <p><FaCircle style={{color:"rgb(54, 162, 235)"}}/> pending</p>
-              <p>{Math.round(pending.length*100/sanai3ies)}%</p>
-            </div>
+         
             <div className="statistic3 freetrail">
               <p><FaCircle style={{color:"rgb(255, 99, 132)"}}/> freetrail</p>
               <p>{Math.round(freetrial.length*100/sanai3ies)}%</p>

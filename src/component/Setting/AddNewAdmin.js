@@ -182,7 +182,7 @@ function Register() {
             <form method="post" onSubmit={userFormik.handleSubmit} onReset={userFormik.handleReset}>
               <div className="form_user" id="form_user">
                 <div className="phead">
-                  <h2 className="head_form">Add new admin </h2>
+                  <h2 className="head_form">إنشاء حساب</h2>
                 </div>
                 {/* firstName lastName */}
                 <div className='row'>
@@ -222,11 +222,44 @@ function Register() {
                 <small className={userFormik.touched.confirmPassword && userFormik.errors.confirmPassword ? 'alert alert-danger py-0 px-1' : null}>{userFormik.touched.confirmPassword && userFormik.errors.confirmPassword}</small>
 
 
-                <small className={userFormik.touched.address && userFormik.errors.address ? 'alert alert-danger py-0 px-1' : null}>{userFormik.touched.address && userFormik.errors.address}</small>         
+                {/* age_and_contry */}
+                <div className="age_and_contry">
+                  <input type={"number"} placeholder="عمرك" className="age" onChange={userFormik.handleChange} value={userFormik.values.age} name='age'></input>
+
+                  <select onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} defaultValue={userFormik.values.address === 0 ? userFormik.values.address = '' : userFormik.values.address} name="address" id="country">
+                    <optgroup label="مدينة أسوان">
+                      <option value="0" selected>أختر المركز</option>
+                      <option value="أسوان">أسوان</option>
+                      <option value="أسوان الجديدة">أسوان الجديدة</option>
+                      <option value="دراو">دراو</option>
+                      <option value="كوم امبو">كوم امبو</option>
+                      <option value="نصر النوبة">نصر النوبة</option>
+                      <option value="كلابشة">كلابشة</option>
+                      <option value="أدفو">أدفو</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <small className={userFormik.touched.address && userFormik.errors.address ? 'alert alert-danger py-0 px-1' : null}>{userFormik.touched.address && userFormik.errors.address}</small>
+
+
+                {/* gender  */}
+                <div className="gender">
+                  <label htmlFor="gender">
+                    <input type="radio" name="gender" onChange={userFormik.handleChange} required defaultValue="ذكر" className="gender" />ذكر
+                  </label>
+
+                  <label htmlFor="gender">
+                    <input type="radio" name="gender" defaultValue="انثى" required onChange={userFormik.handleChange} className="gender" />انثي
+                  </label>
+
+                </div>
+
+
+      
 
                 {/* Supmit Form */}
                 <div className="supmit text-center">
-                  <button className="submit_btn btn" type="submit" id="submit_crafts" >تسجيل</button>
+                  <button className="submit_btn btn" type="submit" id="submit_crafts">تسجيل</button>
                 </div>
 
                 {/* <div className="return_input_user" id=""> */}
@@ -244,8 +277,12 @@ function Register() {
                 {/* </div> */}
               </div>
             </form>
+          </div>
+          <div className="col-lg-6  d-md-none d-sm-none d-lg-none d-xl-block d-none p-0">
           
           </div>
+          {/* overlay from backGround  */}
+       
     
 
     </>

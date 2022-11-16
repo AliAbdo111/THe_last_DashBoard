@@ -43,6 +43,10 @@ function TableJob() {
     });
   }, []);
 
+  useEffect(()=>{
+  setPage(_(data).slice(0).take(pageSize).value())
+  },[data])
+
 console.log(data)
   ////////////////////Sorting////////////////////
   const sorting = (col) => {
@@ -118,7 +122,7 @@ console.log(data)
           <thead>
             <tr>
               <td> Name </td>
-              <td onClick={() => sorting("title")}>{order=="ASC"?<FaArrowDown/>:order=="DSC"?<FaArrowUp/>:''} title</td>
+              <td onClick={() => sorting("title")}>title</td>
               <td onClick={() => sorting("city")}>city</td>
               <td onClick={() => sorting("address")}>address</td>
               <td onClick={() => sorting("status")}>status</td>
