@@ -3,14 +3,17 @@ import axios from "axios";
 import _ from "lodash";
 import {  FaTrashAlt } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
-import {
-  FaHome,
-  FaSignOutAlt,
-  FaChartPie,
-  FaUserAlt,
-  FaCommentAlt,
-} from "react-icons/fa";
 
+import {
+  FaClock,
+  FaGenderless,
+  FaIdCardAlt,
+  FaPhoneSquareAlt,
+  FaTransgender,
+  FaUserAlt,
+} from "react-icons/fa";
+import { GoInfo, GoLocation, GoMail, GoPencil, GoTools } from "react-icons/go";
+import { format } from "date-fns";
 /////constanet/////
 const pageSize = 5;
 const baseURL = "http://localhost:7000/client/all";
@@ -27,14 +30,13 @@ function TAbleClient() {
     axios.get(baseURL).then((response) => {
       setData(response.data.Data);
       setPage(_(response.data.Data).slice(0).take(pageSize).value());
-    });   
+    });
   }, []);
   useEffect(() => {
-      // setData(response.data.Data);
-      setPage(_(data).slice(0).take(pageSize).value());
-      
+    // setData(response.data.Data);
+    setPage(_(data).slice(0).take(pageSize).value());
   }, [data]);
-  
+
   const sorting = (col) => {
     if (order === "ASC") {
       const sorted = [...data].sort((a, b) =>
@@ -107,7 +109,7 @@ function TAbleClient() {
                 item.gender.toLowerCase().includes(search)||
                 item.nationalId.toLowerCase().includes(search)
             )
-            .map((item,index) => (
+            .map((item, index) => (
               <tr key={index}>
                 <td>{`${item.firstName} ${item.lastName}`}</td>
                 <td>{item.email}</td>
@@ -142,7 +144,7 @@ function TAbleClient() {
                 >
                   <div className="modal-dialog">
                     <div className="modal-content">
-                      <div className="modal-header edit_header">
+                      <div className=" d-flex justify-content-between  p-3 align-items-center" dir="rtl">
                         <h1
                           className="modal-title fs-2"
                           id="staticBackdropLabel"
@@ -161,73 +163,110 @@ function TAbleClient() {
                       <div className="modal-body">
                         {/* data Snai3y In Details */}
                         <div className="some_edit_about_snai3y">
-                          <div className="cards-body">
-                          <div>
-                              <h4 className="fw-bolder">Image :</h4>
-                              <img
-                              width={150} 
-                              // height={250}
-                                className="img-thumbnail"
-                                src={item.img}
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">First Name :</h4>
-                              <h5>{item.firstName}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">Last Name :</h4>
-                              <h5>{item.lastName}</h5>
-                            </div>
-                           
-                            <div>
-                              <h4 className="fw-bolder">Phone Number :</h4>
-                              <h5>{item.phoneNumber}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">Email :</h4>
-                              <h5>{item.email}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">City :</h4>
-                              <h5>اسوان</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">National Id :</h4>
-                              <h5 className="card-text">{item.nationalId}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">title :</h4>
-                              <h5 className="card-title">{item.title}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">Age :</h4>
-                              <h5>{item.age}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">Joined Date :</h4>
-                              <h5>{item.joinedDate}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">Gender :</h4>
-                              <h5>{item.gender}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder">Rule :</h4>
-                              <h5>{item.rule}</h5>
-                            </div>
-                            <div>
-                              <h4 className="fw-bolder"> Address :</h4>
-                              <h5>{item.address}</h5>
-                            </div>
-                         
-                          
-                          </div>
+                        <div className="cards-body">
+                  
+                  <div className="leftTitle">
+                  <div className="titleimg">
+                         <img
+                           width={150}
+                           style={{ display: "block" }}
+                           className="img-thumbnail"
+                           src={item.img}
+                           alt=""
+                         />
+                       </div>
+                    <div className="titleContent">
+                         <div className="parentTitles">
+                           <div className="titleCard">
+                             <FaUserAlt
+                               style={{ color: "#ffb200", fontSize: 20 }}
+                             />
+                             <h5>{`${item.firstName} ${item.lastName}`}</h5>
+                           </div>
+                           <div className="titleCard">
+                             <FaPhoneSquareAlt
+                               style={{ color: "#ffb200", fontSize: 20 }}
+                             />
+                             <h5>{item.phoneNumber}</h5>
+                           </div>
+                         </div>
+                         <div className="parentTitles">
+                           <div className="titleCard">
+                             <GoMail
+                               style={{ color: "#ffb200", fontSize: 20 }}
+                             />
+                             <h5>{item.email}</h5>
+                           </div>
+                           <div className="titleCard">
+                             <GoLocation
+                               style={{ color: "#ffb200", fontSize: 22 }}
+                             />
+                             <h5>{item.address}</h5>
+                           </div>
+                         </div>
+                         <div className="parentTitles">
+                           <div className="titleCard">
+                             <FaIdCardAlt
+                               style={{ color: "#ffb200", fontSize: 20 }}
+                             />
+                             <h5 className="card-text">{item.nationalId}</h5>
+                           </div>
+                     
+                           <div className="titleCard">
+                             <GoPencil
+                               style={{ color: "#ffb200", fontSize: 20 }}
+                             />
+                             <h5>{item.age}</h5>
+                           </div>
+                         </div>
+                    </div>
+                  </div>
+                     <div className="rightTitle">
+                         <div className="titleCard">
+                           <FaClock
+                             style={{ color: "#ffb200", fontSize: 22 }}
+                           />
+                           <h5>{`${format(
+                             new Date(item.joinedDate),
+                             "d/MMM/yyyy"
+                           )}`}</h5>
+                         </div>
+                         <div className="parentTitles">
+                           <div>
+                             <div className="titleCard">
+                               <FaTransgender
+                                 style={{ color: "#ffb200", fontSize: 22 }}
+                               />
+                               <h5>{item.gender}</h5>
+                             </div>
+                             <div className="titleCard">
+                               <FaUserAlt
+                                 style={{ color: "#ffb200", fontSize: 20 }}
+                               />
+                               <h5>{item.rule}</h5>
+                             </div>
+                           </div>
+                           <div>
+                             <div className="titleCard">
+                               <GoTools
+                                 style={{ color: "#ffb200", fontSize: 20 }}
+                               />
+                               <h5>{item.skills}</h5>
+                             </div>
+                             <div className="titleCard">
+                               <GoInfo
+                                 style={{ color: "#ffb200", fontSize: 20 }}
+                               />
+                               <h5 className="card-title">{item.title}</h5>
+                             </div>
+                           </div>
+                         </div>
+                     </div>
+                     </div>
                         </div>
                       </div>
 
-                      <div className="modal-footer edit_footer_job p-0">
+                      <div className="modal-footer edit_footer_job p-2" dir="rtl">
                         <button
                           type="button"
                           className="btn btn-secondary edit_close_button"

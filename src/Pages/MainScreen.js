@@ -4,9 +4,11 @@ import TAbleClient from "../component/Table/TAbleClient/TAbleClient";
 import TableJob from "../component/Table/Jobs/TableJob";
 import Setting from '../component/Setting/Setting';
 import Notifection from "../component/Notfication/Notifection";
+
 import './progress.css'
 import Charts from "./Charts";
 function MainScreen() {
+
   return (
     <>
 
@@ -15,15 +17,16 @@ function MainScreen() {
         <Charts />
         {/* <Charts /> */}
         {/* <Charts /> */}
+       
       </div>
       {/* tables and notifecation */}
-    <div style={{ "overflow-x": "auto" }} className="d-flex col-comp flex-xxl-column">
+    <div style={{ "overflow-x": "auto" }} className="d-flex col-comp">
       <div className="me-3">
         <TAbleClient />
         <TAbleSanai3y />
         <TableJob />
       </div>
-      <div>
+      <div className="notification">
         <Notifection/>
       </div>
 

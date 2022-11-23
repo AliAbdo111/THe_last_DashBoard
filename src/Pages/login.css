@@ -64,7 +64,7 @@
 }
 .login_btn:hover{
    background-color: var(--main-color) !important;
-    color: #fff !important;
+    color: #ffb200 !important;
 }
 .login_btn i {
     margin-right: 10px;
