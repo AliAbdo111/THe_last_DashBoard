@@ -52,7 +52,7 @@ function Card() {
          
         
           <Routes>
-    <Route path="/" element={<MainScreen/>}/>
+    <Route path="/"  element={<MainScreen  />} />
     <Route path="/Sanai3y" element={ < TAbleSanai3y  /> }/>
     <Route path="/Client" element={<TAbleClient />} />
     <Route path="/Job" element={<TableJob/>} />
