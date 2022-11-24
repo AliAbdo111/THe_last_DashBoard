@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Sidbar.css";
 
+
 import {
   FaHome,
   FaSignOutAlt,
@@ -63,21 +64,18 @@ function Sidbar() {
             <span className="titel">Jops</span>
           </NavLink>
         </li>
+      
         <li>
-          <NavLink to="Job">
+          <NavLink to="DropDwoin">
+
             <span className="icon">
-              <FaCommentAlt />
-            </span>
-            <span className="titel">Message</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink>
-            <span className="icon">
+
               <FaUserAlt />
+    
             </span>
             <span className="titel">Setting</span>
           </NavLink>
+  
         </li>
         <li>
           <NavLink

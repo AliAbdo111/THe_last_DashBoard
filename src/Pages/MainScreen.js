@@ -1,7 +1,9 @@
 import React from "react";
-import TAbleSanai3y from "../component/Table/TAbleSanai3y";
-import TAbleClient from "../component/Table/TAbleClient/TAbleClient";
-import TableJob from "../component/Table/Jobs/TableJob";
+import AddNewAdmin from  '../component/Setting/AddNewAdmin'
+
+import LastJob from "../Pages/LastJob";
+import LastSanai3y from "../Pages/LastSanai3y";
+import LastClient from "../Pages/LastClient";
 import Setting from '../component/Setting/Setting';
 import Notifection from "../component/Notfication/Notifection";
 
@@ -13,7 +15,7 @@ function MainScreen() {
     <>
 
     <div className="w-100">
-        <Setting/>
+        {/* <Setting/> */}
         <Charts />
         {/* <Charts /> */}
         {/* <Charts /> */}
@@ -22,9 +24,10 @@ function MainScreen() {
       {/* tables and notifecation */}
     <div style={{ "overflow-x": "auto" }} className="d-flex col-comp">
       <div className="me-3">
-        <TAbleClient />
-        <TAbleSanai3y />
-        <TableJob />
+        <LastClient />
+        <LastSanai3y />
+        <LastJob />
+     {/* <AddNewAdmin/> */}
       </div>
       <div className="notification">
         <Notifection/>

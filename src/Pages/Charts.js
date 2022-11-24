@@ -9,6 +9,31 @@ import axios from 'axios';
 import 'reactochart/styles.css';
 import colors from './../../node_modules/d3-scale-chromatic/src/categorical/Accent';
 import { set } from 'lodash';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+// import faker from 'faker';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+);
+
 const baseURL = "http://localhost:7000/Jobs/dates";
 
         const Charts = (props) => {
@@ -24,31 +49,9 @@ const baseURL = "http://localhost:7000/Jobs/dates";
 
 
           }, []);
-
-         
-         
-   
-
-
-
-
-//y is count job
-//x is the day create jobs
-            // const data = [
-                
-            //   {x: 1, y: 2, z: 0},
-            //   {x: 2, y: 10, z: 12},
-            //   {x: 4, y: 15, z: 13},
-            //   {x: 6, y: 15, z: 13},
-            //   {x: 8, y: 17, z: 14},
-            //   {x: 10, y: 20, z: 15},
-            //   {x: 12, y: 23, z: 16},
-            //   {x: 14, y: 25, z: 16},
-            //   {x: 16, y: 27, z: 16},
-            //   {x: 18, y: 30, z: 16},
-            //   {x:20 ,y:34 ,z:17},
-            // ];
-            return <XYPlot width={1000} height={600} >
+            return( 
+            <>
+            <XYPlot width={1000} height={600} >
               <XAxis showGrid={true} title="Days since Jobs" />
               <YAxis title="Count"/>
               <BarChart
@@ -66,9 +69,69 @@ const baseURL = "http://localhost:7000/Jobs/dates";
                 lineStyle={{stroke: '#FFDE00', strokeWidth: 3}}
               />
             </XYPlot>
-          };
+            
+
+</>         ) };
           
         
-    
+  export default Charts       ;
+          
 
-export default Charts
+// import React from 'react';
+// import {
+//   Chart as ChartJS,
+//   CategoryScale,
+//   LinearScale,
+//   PointElement,
+//   LineElement,
+//   Title,
+//   Tooltip,
+//   Filler,
+//   Legend,
+// } from 'chart.js';
+// import { Line } from 'react-chartjs-2';
+// // import faker from 'faker';
+
+// ChartJS.register(
+//   CategoryScale,
+//   LinearScale,
+//   PointElement,
+//   LineElement,
+//   Title,
+//   Tooltip,
+//   Filler,
+//   Legend
+// );
+
+// export const options = {
+//   responsive: true,
+//   plugins: {
+//     legend: {
+//       position: 'top' ,
+//     },
+//     title: {
+//       display: true,
+//       text: 'Chart.js Line Chart',
+//     },
+//   },
+// };
+
+// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+// export const data = {
+//   labels,
+//   // datasets: [
+//   //   {
+//   //     fill: true,
+//   //     label: 'Dataset 2',
+//   //     data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+//   //     borderColor: 'rgb(53, 162, 235)',
+//   //     backgroundColor: 'rgba(53, 162, 235, 0.5)',
+//   //   },
+//   // ],
+// };
+
+// export function Charts() {
+//   return <Line options={options} data={data} />;
+// }
+// export default Charts 
