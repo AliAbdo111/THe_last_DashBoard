@@ -153,25 +153,12 @@ function LastSanai3y() {
                                   </h5>
                                 </div>
 
-                                <div className="titleCard">
-                                  <GoPencil
-                                    style={{ color: "#ffb200", fontSize: 20 }}
-                                  />
-                                  <h5>{item.age}</h5>
-                                </div>
+                              
                               </div>
                             </div>
                           </div>
                           <div className="rightTitle">
-                            <div className="titleCard">
-                              <FaClock
-                                style={{ color: "#ffb200", fontSize: 22 }}
-                              />
-                              <h5>{`${format(
-                                new Date(item.joinedDate),
-                                "d/MMM/yyyy"
-                              )}`}</h5>
-                            </div>
+                           
                             <div className="parentTitles">
                               <div>
                                 <div className="titleCard">
@@ -180,12 +167,7 @@ function LastSanai3y() {
                                   />
                                   <h5>{item.gender}</h5>
                                 </div>
-                                <div className="titleCard">
-                                  <FaUserAlt
-                                    style={{ color: "#ffb200", fontSize: 20 }}
-                                  />
-                                  <h5>{item.rule}</h5>
-                                </div>
+                               
                               </div>
                               <div>
                                 <div className="titleCard">
@@ -195,11 +177,20 @@ function LastSanai3y() {
                                   <h5>{item.skills}</h5>
                                 </div>
                                 <div className="titleCard">
-                                  <GoInfo
+                                  <GoPencil
                                     style={{ color: "#ffb200", fontSize: 20 }}
                                   />
-                                  <h5 className="card-title">{item.title}</h5>
+                                  <h5>{`years ${item.age} `}</h5>
                                 </div>
+                                <div className="titleCard">
+                              <FaClock
+                                style={{ color: "#ffb200", fontSize: 22 }}
+                              />
+                              <h5>{`${format(
+                                new Date(item.joinedDate),
+                                "d/MMM/yyyy"
+                              )}`}</h5>
+                            </div>
                               </div>
                             </div>
                           </div>

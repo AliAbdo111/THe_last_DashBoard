@@ -4,19 +4,20 @@ import AddNewAdmin from  '../component/Setting/AddNewAdmin'
 import LastJob from "../Pages/LastJob";
 import LastSanai3y from "../Pages/LastSanai3y";
 import LastClient from "../Pages/LastClient";
-import Setting from '../component/Setting/Setting';
+import Setting from '../component/TopRate/TopRate';
 import Notifection from "../component/Notfication/Notifection";
 
 import './progress.css'
-import Charts from "./Charts";
+// import Charts from "./Charts";
 function MainScreen() {
 
   return (
     <>
 
     <div className="w-100">
-        {/* <Setting/> */}
-        <Charts />
+        <Setting/>
+   
+        {/* <Charts /> */}
         {/* <Charts /> */}
         {/* <Charts /> */}
        

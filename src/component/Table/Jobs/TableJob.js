@@ -7,6 +7,7 @@ import {
   FaClock,
   FaGenderless,
   FaIdCardAlt,
+  FaSearch,
   FaPhoneSquareAlt,
   FaTransgender,
   FaUserAlt,
@@ -100,13 +101,20 @@ console.log(currentPge)
     <div className="resentOrder">
       <div className="cardHeadr">
         <h2>Jobs Register</h2>
-        <input
+        <div>
+          <input
           type="text"
+          placeholder="Search About Jobs"
           className="search"
-          onChange={(ev) =>{
+          onChange={(ev) => {
             const inputSearch=ev.target.value.toLocaleLowerCase().trim()
-             setSearch(inputSearch)}}
+            setSearch(inputSearch)}}
         />
+        <span className='searchicon'>
+
+<FaSearch/>
+          </span>
+        </div>
       </div>
       {!data ? (
         "not found data"
@@ -247,12 +255,17 @@ console.log(currentPge)
                               </div>
                               <div className="parentTitles">
                                 <div>
-                                  <div className="titleCard">
-                                    <FaUserAlt
-                                      style={{ color: "#ffb200", fontSize: 20 }}
-                                    />
-                                    <h5>{`[${[...item.proposals]}]`}</h5>
-                                  </div>
+                                {item.proposals.length !== 0 ? (
+                                    <div className="titleCard">
+                                      <FaUserAlt
+                                        style={{
+                                          color: "#ffb200",
+                                          fontSize: 20,
+                                        }}
+                                      />
+                                      <h5>{`[${[...item.proposals]}]`}</h5>
+                                    </div>
+                                  ) : null}
                                 </div>
                                 <div>
                                   <div className="titleCard">

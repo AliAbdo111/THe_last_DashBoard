@@ -74,8 +74,11 @@ margin-right: 10px;
 .card .statistic1,.card .statistic2,.card .statistic3{
     display: flex;
     justify-content: space-between;
-    margin: 13px 0;
+    margin: 10px 0;
 }
+/* .marg{
+    margin-left: 16px;
+} */
 
 @media (max-width:800px){
     .card .card1{

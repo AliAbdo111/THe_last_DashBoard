@@ -70,7 +70,7 @@ function Sidbar() {
         </li>
       
         <li>
-          <NavLink to="DropDwoin">
+          <NavLink to="Setting">
 
             <span className="icon">
 

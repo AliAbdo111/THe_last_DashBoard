@@ -75,7 +75,7 @@ function LastClient() {
                 aria-labelledby="staticBackdropLabel"
                 aria-hidden="true"
               >
-                <div className="modal-dialog">
+                 <div className="modal-dialog">
                   <div className="modal-content">
                     <div
                       className=" d-flex justify-content-between  p-3 align-items-center"
@@ -146,12 +146,7 @@ function LastClient() {
                                   </h5>
                                 </div>
 
-                                <div className="titleCard">
-                                  <GoPencil
-                                    style={{ color: "#ffb200", fontSize: 20 }}
-                                  />
-                                  <h5>{item.age}</h5>
-                                </div>
+                              
                               </div>
                             </div>
                           </div>
@@ -173,12 +168,7 @@ function LastClient() {
                                   />
                                   <h5>{item.gender}</h5>
                                 </div>
-                                <div className="titleCard">
-                                  <FaUserAlt
-                                    style={{ color: "#ffb200", fontSize: 20 }}
-                                  />
-                                  <h5>{item.rule}</h5>
-                                </div>
+                              
                               </div>
                               <div>
                                 <div className="titleCard">
@@ -188,10 +178,10 @@ function LastClient() {
                                   <h5>{item.skills}</h5>
                                 </div>
                                 <div className="titleCard">
-                                  <GoInfo
+                                  <GoPencil
                                     style={{ color: "#ffb200", fontSize: 20 }}
                                   />
-                                  <h5 className="card-title">{item.title}</h5>
+                                  <h5>{`years ${item.age} `}</h5>
                                 </div>
                               </div>
                             </div>
