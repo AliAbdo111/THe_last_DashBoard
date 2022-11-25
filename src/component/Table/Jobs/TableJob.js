@@ -18,7 +18,7 @@ import _ from "lodash";
 import {  FaTrashAlt } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 //////////////////constant//////////////////
-const pageSize = 5;
+const pageSize = 10;
 const baseURL = "http://localhost:7000/Jobs/all";
 
 
@@ -35,7 +35,7 @@ function TableJob() {
   const [order, setOrder] = useState('');
   useEffect(() => {
     axios.get(baseURL).then((response) => {
-      // console.log(response.data.data);
+      console.log(response.data.data);
       setData(response.data.data);
       // console.log("efect");
       setPage(_(response.data.data).slice(0).take(pageSize).value());
@@ -77,7 +77,7 @@ console.log(currentPge)
     // console.log(pagnum);
     setCurrentPge(pagnum);
     // setData(pagnum)
-    const startIndex = (pagnum ) * pageSize;
+    const startIndex = (pagnum - 1) * pageSize;
     const pagenetdPoste = _(data).slice(startIndex).take(pageSize).value();
     setPage(pagenetdPoste);
   // console.log(startIndex);
@@ -89,11 +89,6 @@ console.log(currentPge)
     let jobs = data.filter((item) => item._id !== id);
     // setPage(jobs);
     setData([...jobs]);
-    // console.log(jobs);
-    setPage(_(jobs).slice(0).take(pageSize).value());
-    // const token ="6360d23e1cadd7241e2c1049";
-    // localStorage.setItem(token)
-    // console.log(jobs);
    const token = localStorage.getItem("token")
     axios.delete(`http://localhost:7000/jobs/delete/${id}`,{headers:{authorization:token}}).then((res) => {});
   }
