@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Sidbar.css";
 
+import { FaFirstOrderAlt} from "react-icons/fa";
 
 import {
   FaHome,
@@ -13,7 +14,10 @@ function Sidbar() {
   function LogIn() {
     localStorage.removeItem("token");
   }
+  let navbar=document.getElementsByClassName('navbar')
   return (
+  
+     
     <div className="navbar ">
       <ul>
         <li>
@@ -90,6 +94,7 @@ function Sidbar() {
             <span className="titel">Log out</span>
           </NavLink>
         </li>
+          
       </ul>
     </div>
   );

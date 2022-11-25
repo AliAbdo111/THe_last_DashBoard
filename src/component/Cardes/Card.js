@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { FaFirstOrderAlt} from "react-icons/fa";
 import './Card.css'
 import '../../Pages/Var.css'
 import Setting from '../Setting/Setting' 
@@ -138,7 +139,7 @@ const inProgress = []
 
       return (
         <>
-     
+
         <div className="card">
           <div className="card1 show1 "onClick={()=>{showjob?setShowjob(false):setShowjob(true)}}>
             <div>
